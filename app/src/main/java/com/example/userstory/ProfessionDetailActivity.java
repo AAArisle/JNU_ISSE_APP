@@ -21,8 +21,8 @@ public class ProfessionDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profession_detail);
-        Button exportButton = findViewById(R.id.btn_export_json);
-        exportButton.setOnClickListener(v -> exportToJson());
+//        Button exportButton = findViewById(R.id.btn_export_json);
+//        exportButton.setOnClickListener(v -> exportToJson());
         // 接收传递过来的数据
         String professionName = getIntent().getStringExtra("professionName");
         int imageResId = getIntent().getIntExtra("imageResId", 0);

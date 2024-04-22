@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".fragment.CollegeIntroFragment">
 
+
     <TextView
         android:id="@+id/text_view_college_intro"
         android:layout_width="match_parent"

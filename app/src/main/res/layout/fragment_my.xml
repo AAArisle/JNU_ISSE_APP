@@ -4,16 +4,23 @@
     android:layout_height="match_parent"
     tools:context="com.example.userstory.fragment.MyFragment">
 
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <!-- 用户头像 -->
+
+    <!-- 设置图标 -->
+
     <ImageView
         android:id="@+id/avatarImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="173dp"
         android:src="@drawable/avatar" />
 
-    <!-- 设置图标 -->
     <ImageView
         android:id="@+id/settingsImageView"
         android:layout_width="wrap_content"
@@ -27,10 +34,10 @@
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="学生1"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/avatarImageView"
-        android:layout_marginTop="16dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="学生1" />
 
     <!-- 分割线1 -->
     <View
