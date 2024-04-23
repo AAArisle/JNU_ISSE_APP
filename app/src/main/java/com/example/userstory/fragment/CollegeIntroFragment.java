@@ -1,3 +1,4 @@
+// 【学院】历史沿革
 package com.example.userstory.fragment;
 
 
@@ -5,8 +6,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
 import com.example.userstory.R;
 
 public class CollegeIntroFragment extends Fragment {

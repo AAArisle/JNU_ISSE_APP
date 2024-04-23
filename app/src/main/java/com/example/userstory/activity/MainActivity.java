@@ -1,16 +1,13 @@
+package com.example.userstory.activity;
 
-
-package com.example.userstory;
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
-
-
+import com.example.userstory.R;
 import com.example.userstory.fragment.CollegeFragment;
 import com.example.userstory.fragment.MyFragment;
 import com.example.userstory.fragment.ProfessionFragment;
@@ -36,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         collegeFragment = new CollegeFragment();
         myFragment = new MyFragment();
 
-        //现实默认的 Fragment
+        //显示默认的 Fragment
         activeFragment = supervisorFragment;
         getSupportFragmentManager().beginTransaction().add(R.id.frame_layout, supervisorFragment)
                 .add(R.id.frame_layout, professionFragment).hide(professionFragment)

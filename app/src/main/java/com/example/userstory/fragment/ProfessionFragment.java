@@ -1,3 +1,4 @@
+// 【专业】页面
 package com.example.userstory.fragment;
 
 import android.content.Intent;
@@ -10,21 +11,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.userstory.ProfessionDetailActivity;
 import com.example.userstory.R;
-
-import java.util.ArrayList;
-import java.util.List;
-
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import com.example.userstory.activity.ProfessionDetailActivity;
+import com.example.userstory.object.Profession;
+import com.example.userstory.object.ProfessionAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

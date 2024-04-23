@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/menu_supervisor"
+        android:icon="@drawable/menu_supervisor"
         android:title="@string/menu_supervisor" />
     <item
         android:id="@+id/menu_profession"
+        android:icon="@drawable/menu_profession"
         android:title="@string/menu_profession" />
     <item
         android:id="@+id/menu_college"
+        android:icon="@drawable/menu_college"
         android:title="@string/menu_college" />
     <item
         android:id="@+id/menu_my"
+        android:icon="@drawable/menu_my"
         android:title="@string/menu_my" />
 </menu>

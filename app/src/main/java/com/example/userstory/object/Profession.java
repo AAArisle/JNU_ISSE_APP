@@ -1,4 +1,5 @@
-package com.example.userstory.fragment;
+// 【专业】类
+package com.example.userstory.object;
 
 
 public class Profession {

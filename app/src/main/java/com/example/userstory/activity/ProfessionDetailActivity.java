@@ -1,26 +1,43 @@
-package com.example.userstory;
+package com.example.userstory.activity;
 
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.userstory.R;
-import com.squareup.picasso.Picasso;
-
-
-
-
-
 
 public class ProfessionDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profession_detail);
+
+        // 设置Toolbar作为ActionBar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);
+        toolbarTitle.setText(R.string.profession_detail);
+        toolbarTitle.setGravity(Gravity.LEFT);
+        setSupportActionBar(toolbar);
+        // 标签页左边的返回按钮
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        // 设置返回按钮的点击事件
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 在这里处理返回按钮的点击事件，比如finish当前Activity
+                finish();
+            }
+        });
+
+
 //        Button exportButton = findViewById(R.id.btn_export_json);
 //        exportButton.setOnClickListener(v -> exportToJson());
         // 接收传递过来的数据
@@ -52,10 +69,6 @@ public class ProfessionDetailActivity extends AppCompatActivity {
 //        introDetailTextView.setText("专业规划");
 
 
-    }
-    private void exportToJson() {
-        // 这里编写导出 JSON 的代码逻辑
-        Toast.makeText(this, "导出数据为 JSON", Toast.LENGTH_SHORT).show();
     }
 }
 

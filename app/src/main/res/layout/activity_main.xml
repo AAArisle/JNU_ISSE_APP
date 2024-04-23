@@ -4,30 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
-
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <FrameLayout
+            android:id="@+id/frame_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/frame_layout">
+            android:layout_weight="1">
 
         </FrameLayout>
 
+        <!-- 分割线 -->
+        <View
+            android:id="@+id/line_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navi_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/bottom_navi_view"
             app:itemBackground="@android:color/transparent"
             app:labelVisibilityMode="labeled"
-            app:menu="@menu/main_bottom_navigation"/>
+            app:menu="@menu/main_bottom_navigation" />
 
     </LinearLayout>
 

@@ -1,26 +1,16 @@
-package com.example.userstory.fragment;
+// 【专业】页面的adapter
+package com.example.userstory.object;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.userstory.R;
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
-
-
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 

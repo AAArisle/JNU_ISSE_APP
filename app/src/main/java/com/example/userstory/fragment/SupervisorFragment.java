@@ -1,21 +1,21 @@
-
+// 首页【导师】页面
 package com.example.userstory.fragment;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.userstory.R;
-import com.example.userstory.fragment.activity.SupervisorDetailActivity;
+import com.example.userstory.activity.SupervisorDetailActivity;
 import com.example.userstory.object.Supervisor;
 
 import java.util.ArrayList;
@@ -46,16 +46,10 @@ public class SupervisorFragment extends Fragment {
         View inflate = inflater.inflate(R.layout.fragment_supervisor, container, false);
         RecyclerView recyclerView = inflate.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
-        supervisors.add(new Supervisor());
-        supervisors.add(new Supervisor());
-        supervisors.add(new Supervisor());
-        supervisors.add(new Supervisor());
-        supervisors.add(new Supervisor());
-        supervisors.add(new Supervisor());
-        supervisors.add(new Supervisor());
-        supervisors.add(new Supervisor());
-        supervisors.add(new Supervisor());
-        supervisors.add(new Supervisor());
+        for (int i = 0; i < 10; i++) {
+            supervisors.add(new Supervisor());
+        }
+
         supervisorAdapter = new SupervisorFragment.CustomAdapter(requireActivity(), supervisors);
         recyclerView.setAdapter(supervisorAdapter);
 

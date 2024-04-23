@@ -1,14 +1,17 @@
 <resources>
-    <string name="app_name">智能科学研究生招生</string>
+    <string name="app_name">智能科学与工程学院研究生招生</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_supervisor">导师</string>
+        <string name="supervisor_detail">导师介绍</string>
     <string name="menu_profession">专业</string>
+        <string name="profession_detail">专业介绍</string>
     <string name="menu_college">学院</string>
     <string name="menu_my">我的</string>
     <string-array name="my_options">
         <item>收藏的人</item>
         <item>查询进度</item>
+        <item>管理员登录</item>
         <!-- 这里添加更多的功能列表项 -->
     </string-array>
     <string name="navigation_drawer_open">Open navigation drawer</string>
