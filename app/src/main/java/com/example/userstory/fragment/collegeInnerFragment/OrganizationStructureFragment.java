@@ -1,5 +1,5 @@
 // 【学院】组织结构
-package com.example.userstory.fragment;
+package com.example.userstory.fragment.collegeInnerFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

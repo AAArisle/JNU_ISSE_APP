@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    implementation("com.tencent.map:tencent-map-vector-sdk:4.4.2")
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.drawerlayout:drawerlayout:1.0.0")
