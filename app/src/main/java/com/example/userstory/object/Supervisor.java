@@ -3,15 +3,37 @@ package com.example.userstory.object;
 import com.example.userstory.R;
 
 public class Supervisor {
+    String name;
+    String direction;
+    int imageId;
+
+    public Supervisor(String name, String direction, int imageId) {
+        this.name = name;
+        this.direction = direction;
+        this.imageId = imageId;
+    }
+
     public String getSupervisorName() {
-        return "导师姓名";
+        return name;
+    }
+
+    public void setSupervisorName(String name) {
+        this.name = name;
     }
 
     public String getSupervisorDirection() {
-        return "研究方向";
+        return direction;
+    }
+
+    public void setSupervisorDirection(String direction) {
+        this.direction = direction;
     }
 
     public int getImageId() {
-        return R.drawable.avatar;
+        return imageId;
+    }
+
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
     }
 }
