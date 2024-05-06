@@ -5,5 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".fragment.LeaderShipFragment">
 
+        <TextView
+            android:id="@+id/text_view_leader_ship"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:padding="16dp"
+            android:textSize="18sp" />
 
 </FrameLayout>

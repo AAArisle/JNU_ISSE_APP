@@ -1,9 +1,733 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.OrganizationStructureFragment">
+    android:layout_height="match_parent">
 
 
-</FrameLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/black">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0.5dp">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="0.5dp"
+                android:layout_weight="0.4"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="组织名称"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="0.5dp"
+                android:layout_weight="0.1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="职位"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="0.5dp"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="负责老师"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0.5dp"
+                android:layout_weight="0.1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="办公室房号\n办公电话"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0.5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text=" 教 \n学\n部\n门"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView221"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:text="人工智能\n教研室"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/textView222"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:text="物联网工程\n教研室"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/textView223"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:text="工业工程\n教研室"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/textView224"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:text="数学\n教研室"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="0.5dp"
+                android:layout_weight="0.1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="教研室主任"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView241"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="赵阔"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView242"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="窦庆萍"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView243"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="孙素筠"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView244"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="王为民"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView251"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="611"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView252"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="636"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView253"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="609"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView254"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="604"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0.5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text=" 研 \n究\n机\n构"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="物联网\n与物流工程\n研究院"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="0.5dp"
+                android:layout_weight="0.1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="行政\n秘书"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="0.5dp"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="王晓红"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="0.5dp"
+                android:layout_weight="0.1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="634B\n8505636"
+                android:textColor="@color/black" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0.5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="      "
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView421"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="3.4"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:text="综合管理办公室"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/textView422"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:text="学生工作办公室"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/textView423"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="0.78"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:text="教学管理办公室"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView431"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="0.08"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="六级组织员"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView432"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="0.007"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="办公室主任"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView433"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1.45"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="行政秘书"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView434"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="0.19"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="科研秘书"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView435"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1.4"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="辅导员"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView436"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="0.6"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="教务秘书"
+                    android:textColor="@color/black" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView4401"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="周昌波\n党务、实验中心主任\n"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4402"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="刘煜琼\n全面负责办公室工作"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4403"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="谢朔寅\n人事、学科建设、实验室、计生"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4404"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="成文娟\n产业学院建设、外事、高研班、人工智能专业研究生教务"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4405"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="陈洋\n物流工程与管理专业研究生教务工作（兼）"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4406"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="张明亮\n实验中心副主任（设备采购、招投标），  高水平经费建设项目秘书（兼）"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4407"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="\n王晓红\n"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4408"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="李子昂\n本科生学生工作、就业、校友"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4409"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="余帆\n本科生工作"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4410"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="邓凯文\n本科生和研究生学生工作、团委、工会"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4411"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="钟承彬\n本科生学生工作、党务、安保、网络安全"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4412"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="吴士璇\n本科生学生工作、宣传、新闻"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4413"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="石敏\n本科生教务、院务、财务协管"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4414"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="吕燕嫦\n本科生教务、院务、固定资产管理"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView4501"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="626\n8505530"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4502"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="0.95"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="634B\n8505610"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4503"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="0.97"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="634A\n8505678"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4504"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="629\n8505586"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4505"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="0.97"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="实验楼"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4506"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="634B\n8505636"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4507"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="0.87"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="633\n8505313"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4508"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="0.92"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="623\n8505691"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4509"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="634A\n8505678"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4510"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="634B\n8505636"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+
+        </TableRow>
+
+
+    </TableLayout>
+</ScrollView>
