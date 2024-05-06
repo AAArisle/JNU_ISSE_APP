@@ -1,4 +1,4 @@
-package com.example.userstory.activity;
+package com.example.userstory;
 
 import android.os.Bundle;
 

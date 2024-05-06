@@ -1,12 +1,16 @@
 // 首页【导师】页面
 package com.example.userstory.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,16 +49,46 @@ public class SupervisorFragment extends Fragment {
         // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.fragment_supervisor, container, false);
         RecyclerView recyclerView = inflate.findViewById(R.id.recycler_view);
+        EditText searchText = inflate.findViewById(R.id.search_edit_text);
         recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
         for (int i = 0; i < 10; i++) {
-            supervisors.add(new Supervisor());
+            allSupervisors.add(new Supervisor("导师姓名" + i, "研究方向" + i, R.drawable.avatar));
         }
-
+        supervisors.addAll(allSupervisors);
         supervisorAdapter = new SupervisorFragment.CustomAdapter(requireActivity(), supervisors);
         recyclerView.setAdapter(supervisorAdapter);
+        searchText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String searchContent = searchText.getText().toString();
+                supervisors.clear();
+                if (!searchContent.equals("")) {
+                    supervisorAdapter.notifyDataSetChanged();
+                    for (Supervisor supervisor : allSupervisors) {
+                        if (supervisor.getSupervisorName().contains(searchContent) || supervisor.getSupervisorDirection().contains(searchContent)) {
+                            supervisors.add(supervisor);
+                            supervisorAdapter.notifyDataSetChanged();
+                        }
+                    }
+                } else {
+                    supervisors.addAll(allSupervisors);
+                    supervisorAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
         return inflate;
     }
+    ArrayList<Supervisor> allSupervisors = new ArrayList<>();
     ArrayList<Supervisor> supervisors = new ArrayList<>();
     SupervisorFragment.CustomAdapter supervisorAdapter;
     public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {

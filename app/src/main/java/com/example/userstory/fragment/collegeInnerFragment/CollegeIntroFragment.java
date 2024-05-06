@@ -1,5 +1,5 @@
 // 【学院】历史沿革
-package com.example.userstory.fragment;
+package com.example.userstory.fragment.collegeInnerFragment;
 
 
 import android.os.Bundle;

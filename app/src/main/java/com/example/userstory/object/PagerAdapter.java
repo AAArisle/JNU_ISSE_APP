@@ -6,12 +6,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.userstory.fragment.AcademicCommitteeFragment;
-import com.example.userstory.fragment.CollegeIntroFragment;
-import com.example.userstory.fragment.ContactUsFragment;
-import com.example.userstory.fragment.DeanMessageFragment;
-import com.example.userstory.fragment.LeaderShipFragment;
-import com.example.userstory.fragment.OrganizationStructureFragment;
+import com.example.userstory.fragment.collegeInnerFragment.AcademicCommitteeFragment;
+import com.example.userstory.fragment.collegeInnerFragment.CollegeIntroFragment;
+import com.example.userstory.fragment.collegeInnerFragment.ContactUsFragment;
+import com.example.userstory.fragment.collegeInnerFragment.DeanMessageFragment;
+import com.example.userstory.fragment.collegeInnerFragment.LeaderShipFragment;
+import com.example.userstory.fragment.collegeInnerFragment.OrganizationStructureFragment;
 
 public class PagerAdapter extends FragmentStateAdapter{
     public PagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
