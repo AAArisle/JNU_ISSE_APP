@@ -14,4 +14,7 @@
         <item>管理员登录</item>
         <!-- 这里添加更多的功能列表项 -->
     </string-array>
+    <string name="address">地址：</string>
+    <string name="telephone">电话：</string>
+    <string name="email">邮箱：</string>
 </resources>
