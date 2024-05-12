@@ -18,13 +18,13 @@ public class ProfessionDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profession_detail);
 
-        // 设置Toolbar作为ActionBar
+//         设置Toolbar作为ActionBar
         Toolbar toolbar = findViewById(R.id.toolbar);
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.profession_detail);
         toolbarTitle.setGravity(Gravity.LEFT);
         setSupportActionBar(toolbar);
-        // 标签页左边的返回按钮
+//         标签页左边的返回按钮
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -38,35 +38,19 @@ public class ProfessionDetailActivity extends AppCompatActivity {
         });
 
 
-//        Button exportButton = findViewById(R.id.btn_export_json);
-//        exportButton.setOnClickListener(v -> exportToJson());
-        // 接收传递过来的数据
-        String professionName = getIntent().getStringExtra("professionName");
-        int imageResId = getIntent().getIntExtra("imageResId", 0);
 
-        // 设置图片
-        ImageView imageView = findViewById(R.id.imageView);
-        imageView.setImageResource(imageResId);
-
-        // 设置基本信息
-        TextView nameTextView = findViewById(R.id.textView);
-        nameTextView.setText(professionName);
-
-        // 示例数据，实际应用中这些应该是动态加载的
         TextView titleTextView = findViewById(R.id.textView2);
         titleTextView.setText("专业介绍");
 
         TextView researchTextView = findViewById(R.id.textView3);
         researchTextView.setText("专业课程");
 
-//        TextView researchDetailTextView = findViewById(R.id.textView4);
-//        researchDetailTextView.setText("申请条件");
+
 
         TextView introTextView = findViewById(R.id.textView5);
         introTextView.setText("申请条件");
 
-//        TextView introDetailTextView = findViewById(R.id.textView6);
-//        introDetailTextView.setText("专业规划");
+
 
 
     }
