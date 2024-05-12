@@ -30,15 +30,14 @@ public class ProfessionFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
+
         professions = new ArrayList<>();
-        professions.add(new Profession("Biology", R.drawable.avatar));
-        professions.add(new Profession("Computer Science", R.drawable.avatar));
-        professions.add(new Profession("Politics", R.drawable.avatar));
-        professions.add(new Profession("Pholophy", R.drawable.avatar));
-        professions.add(new Profession("Maths", R.drawable.avatar));
-        professions.add(new Profession("AI", R.drawable.avatar));
-
-
+        professions.add(new Profession("Biology", R.drawable.avatar, "Biology is about life.", "Courses cover genetics, etc.", "Requirements include..."));
+        professions.add(new Profession("Computer Science", R.drawable.avatar, "Study of algorithmic processes.", "Courses include programming, etc.", "Requirements include..."));
+        professions.add(new Profession("Politics", R.drawable.avatar, "Politics involves governance.", "Courses include political theory, etc.", "Requirements include..."));
+        professions.add(new Profession("Philosophy", R.drawable.avatar, "Philosophy explores general questions.", "Courses cover ethics, etc.", "Requirements include..."));
+        professions.add(new Profession("Maths", R.drawable.avatar, "Mathematics is about quantity.", "Courses cover algebra, etc.", "Requirements include..."));
+        professions.add(new Profession("AI", R.drawable.avatar, "AI is about machine intelligence.", "Courses include machine learning, etc.", "Requirements include..."));
 
 
         professionAdapter = new ProfessionAdapter(professions, this::navigateToDetail);
@@ -50,7 +49,9 @@ public class ProfessionFragment extends Fragment {
         Intent intent = new Intent(getActivity(), ProfessionDetailActivity.class);
         intent.putExtra("professionName", profession.getName());
         intent.putExtra("imageResId", profession.getImageResId());
-
+        intent.putExtra("professionIntro", profession.getIntroDetail());
+        intent.putExtra("professionCourses", profession.getCoursesDetail());
+        intent.putExtra("professionRequirements", profession.getRequirementsDetail());
         startActivity(intent);
     }
 
