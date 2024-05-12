@@ -38,21 +38,41 @@ public class ProfessionDetailActivity extends AppCompatActivity {
         });
 
 
+//        TextView titleTextView = findViewById(R.id.textView2);
+//        titleTextView.setText("专业介绍");
+//
+//        TextView researchTextView = findViewById(R.id.textView3);
+//        researchTextView.setText("专业课程");
+//
+//
+//
+//        TextView introTextView = findViewById(R.id.textView5);
+//        introTextView.setText("申请条件");
 
+// 接收传递过来的数据
+        String professionName = getIntent().getStringExtra("professionName");
+        int imageResId = getIntent().getIntExtra("imageResId", 0);
+        String professionIntro = getIntent().getStringExtra("professionIntro");
+        String professionCourse = getIntent().getStringExtra("professionCourse");
+        String professionRequirements = getIntent().getStringExtra("professionRequirements");
+
+        // 设置图片
+        ImageView imageView = findViewById(R.id.imageView);
+        imageView.setImageResource(imageResId);
+
+        // 设置基本信息
+        TextView nameTextView = findViewById(R.id.textView);
+        nameTextView.setText(professionName);
+
+        // 设置文本信息
         TextView titleTextView = findViewById(R.id.textView2);
-        titleTextView.setText("专业介绍");
+        titleTextView.setText(professionIntro);
 
         TextView researchTextView = findViewById(R.id.textView3);
-        researchTextView.setText("专业课程");
-
-
+        researchTextView.setText(professionCourse);
 
         TextView introTextView = findViewById(R.id.textView5);
-        introTextView.setText("申请条件");
-
-
-
-
+        introTextView.setText(professionRequirements);
     }
 }
 

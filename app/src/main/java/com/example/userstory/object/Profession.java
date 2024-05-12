@@ -19,3 +19,4 @@ public class Profession {
         return imageResId;
     }
 }
+

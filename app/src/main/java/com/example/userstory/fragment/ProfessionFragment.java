@@ -1,4 +1,4 @@
-// 【专业】页面
+
 package com.example.userstory.fragment;
 
 import android.content.Intent;
@@ -38,6 +38,9 @@ public class ProfessionFragment extends Fragment {
         professions.add(new Profession("Maths", R.drawable.avatar));
         professions.add(new Profession("AI", R.drawable.avatar));
 
+
+
+
         professionAdapter = new ProfessionAdapter(professions, this::navigateToDetail);
         recyclerView.setAdapter(professionAdapter);
         return view;
@@ -47,6 +50,9 @@ public class ProfessionFragment extends Fragment {
         Intent intent = new Intent(getActivity(), ProfessionDetailActivity.class);
         intent.putExtra("professionName", profession.getName());
         intent.putExtra("imageResId", profession.getImageResId());
+
         startActivity(intent);
     }
+
+
 }
