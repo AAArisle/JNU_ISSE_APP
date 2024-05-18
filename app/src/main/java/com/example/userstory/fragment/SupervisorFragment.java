@@ -57,34 +57,7 @@ public class SupervisorFragment extends Fragment {
         supervisors.addAll(allSupervisors);
         supervisorAdapter = new SupervisorFragment.CustomAdapter(requireActivity(), supervisors);
         recyclerView.setAdapter(supervisorAdapter);
-        searchText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
 
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String searchContent = searchText.getText().toString();
-                supervisors.clear();
-                if (!searchContent.equals("")) {
-                    supervisorAdapter.notifyDataSetChanged();
-                    for (Supervisor supervisor : allSupervisors) {
-                        if (supervisor.getSupervisorName().contains(searchContent) || supervisor.getSupervisorDirection().contains(searchContent)) {
-                            supervisors.add(supervisor);
-                            supervisorAdapter.notifyDataSetChanged();
-                        }
-                    }
-                } else {
-                    supervisors.addAll(allSupervisors);
-                    supervisorAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
 
         return inflate;
     }
