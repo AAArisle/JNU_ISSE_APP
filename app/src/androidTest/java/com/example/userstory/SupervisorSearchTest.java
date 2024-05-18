@@ -2,6 +2,7 @@ package com.example.userstory;
 
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -25,7 +26,6 @@ import androidx.test.filters.LargeTest;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,13 +48,17 @@ public class SupervisorSearchTest {
                                         1),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("1"), closeSoftKeyboard());
+        appCompatEditText.perform(click());
 
-        ViewInteraction viewGroup = onView(
-                allOf(withParent(allOf(withId(R.id.recycler_view),
-                                withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.search_edit_text),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.LinearLayout")),
+                                        1),
+                                0),
                         isDisplayed()));
-        viewGroup.check(matches(isDisplayed()));
+        appCompatEditText2.perform(replaceText("1"), closeSoftKeyboard());
 
         ViewInteraction textView = onView(
                 allOf(withId(R.id.textView_name), withText("导师姓名1"),
