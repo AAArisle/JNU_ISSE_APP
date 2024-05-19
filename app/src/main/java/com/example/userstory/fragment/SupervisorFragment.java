@@ -88,9 +88,13 @@ public class SupervisorFragment extends Fragment {
         });
         return inflate;
     }
-    ArrayList<Supervisor> allSupervisors = new ArrayList<>();
+    public ArrayList<Supervisor> allSupervisors = new ArrayList<>();
     ArrayList<Supervisor> supervisors = new ArrayList<>();
     SupervisorFragment.CustomAdapter supervisorAdapter;
+
+    public void populateSupervisorsList() {
+    }
+
     public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
         private ArrayList<Supervisor> dataList;
         private Context context;
