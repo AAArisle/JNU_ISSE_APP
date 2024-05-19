@@ -48,31 +48,31 @@ public class ProfessionDetailActivityTestByYao {
         recyclerView.perform(actionOnItemAtPosition(0, click()));
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.textView), withText("µ¼Ê¦ĞÕÃû"),
+                allOf(withId(R.id.textView),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
                         isDisplayed()));
-        textView.check(matches(withText("µ¼Ê¦0")));
+        textView.check(matches(withText("å¯¼å¸ˆ0")));
 
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.textView2), withText("Àà±ğÖ°³Æ"),
+                allOf(withId(R.id.textView2),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
                         isDisplayed()));
-        textView2.check(matches(withText("½²Ê¦")));
+        textView2.check(matches(withText("è®²å¸ˆ")));
 
         ViewInteraction textView3 = onView(
-                allOf(withId(R.id.textView4), withText("TextView"),
+                allOf(withId(R.id.textView4),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
                         isDisplayed()));
         textView3.check(matches(withText("AI")));
 
         ViewInteraction textView4 = onView(
-                allOf(withId(R.id.textView6), withText("TextView"),
+                allOf(withId(R.id.textView6),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
                         isDisplayed()));
-        textView4.check(matches(withText("ÎÒÊÇµ¼Ê¦0£¬Ò»ÃûÑĞ¾¿·½ÏòÎªÈË¹¤ÖÇÄÜµÄ½²Ê¦¡£ÖÂÁ¦ÓÚÌ½Ë÷AIÔÚ¸÷¸öÁìÓòµÄÓ¦ÓÃ£¬°ïÖúÑ§ÉúÕÆÎÕ×îĞÂµÄ¼¼ÊõºÍÖªÊ¶¡£ÈÈ°®½ÌÑ§£¬ÀÖÓÚ·ÖÏí£¬ÆÚ´ıÓëÄãÒ»ÆğÌ½ÌÖAIµÄÎŞÏŞ¿ÉÄÜĞÔ¡£")));
+        textView4.check(matches(withText("æˆ‘æ˜¯å¯¼å¸ˆ0ï¼Œä¸€åç ”ç©¶æ–¹å‘ä¸ºäººå·¥æ™ºèƒ½çš„è®²å¸ˆã€‚è‡´åŠ›äºæ¢ç´¢AIåœ¨å„ä¸ªé¢†åŸŸçš„åº”ç”¨ï¼Œå¸®åŠ©å­¦ç”ŸæŒæ¡æœ€æ–°çš„æŠ€æœ¯å’ŒçŸ¥è¯†ã€‚çƒ­çˆ±æ•™å­¦ï¼Œä¹äºåˆ†äº«ï¼ŒæœŸå¾…ä¸ä½ ä¸€èµ·æ¢è®¨AIçš„æ— é™å¯èƒ½æ€§ã€‚")));
 
         ViewInteraction textView5 = onView(
-                allOf(withId(R.id.textView8), withText("TextView"),
+                allOf(withId(R.id.textView8),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
                         isDisplayed()));
         textView5.check(matches(withText("10001")));

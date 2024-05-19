@@ -44,4 +44,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.2.0-alpha02")
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.6.0-alpha02")
 
+    implementation ("androidx.tracing:tracing:1.2.0-beta02")
+    testImplementation ("org.json:json:20231013")
+
 }
