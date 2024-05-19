@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-
+import com.example.userstory.fragment.SupervisorDataManager;
 import com.example.userstory.object.Supervisor;
 import com.example.userstory.fragment.SupervisorFragment;
 
@@ -45,6 +45,6 @@ public class ExampleUnitTest {
         // 验证第一个导师的信息
         assertEquals("黄国全", firstSupervisor.getSupervisorName());
         assertEquals("管理科学与工程", firstSupervisor.getSupervisorDirection());
-        assertEquals(R.drawable.avatar, firstSupervisor.getImageId());
+        assertEquals(R.drawable.avatar1, firstSupervisor.getImageId());
     }
 }
