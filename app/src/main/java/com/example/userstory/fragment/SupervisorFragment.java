@@ -52,9 +52,6 @@ public class SupervisorFragment extends Fragment {
         EditText searchText = inflate.findViewById(R.id.search_edit_text);
         recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
         populateSupervisorsList();
-        for (int i = 0; i < 10; i++) {
-            allSupervisors.add(new Supervisor("导师姓名" + i, "研究方向" + i, R.drawable.avatar));
-        }
         // 个性化导师
         allSupervisors.get(0).setSupervisorName("导师0");
         allSupervisors.get(0).setJob_title("讲师");
