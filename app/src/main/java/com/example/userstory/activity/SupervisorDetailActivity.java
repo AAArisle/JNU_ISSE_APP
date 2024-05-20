@@ -2,6 +2,7 @@
 package com.example.userstory.activity;
 
 import android.os.Bundle;
+import android.os.TestLooperManager;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.userstory.R;
+import com.example.userstory.object.Supervisor;
 
 public class SupervisorDetailActivity extends AppCompatActivity {
 
@@ -19,8 +21,23 @@ public class SupervisorDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_detail);
+        // 接收intent以便个性化界面
+        Supervisor receivedSupervisor = getIntent().getParcelableExtra("Supervisor", Supervisor.class);
+
+        // 展示导师具体信息
         ImageView imageView = this.findViewById(R.id.imageView);
-        imageView.setImageResource(R.drawable.avatar);
+        TextView name = this.findViewById(R.id.textView);
+        TextView job_title = this.findViewById(R.id.textView2);
+        TextView research_direction = this.findViewById(R.id.textView4);
+        TextView introduction = this.findViewById(R.id.textView6);
+        TextView contact_information = this.findViewById(R.id.textView8);
+
+        imageView.setImageResource(receivedSupervisor.getImageId());
+        name.setText(receivedSupervisor.getSupervisorName());
+        job_title.setText(receivedSupervisor.getJob_title());
+        research_direction.setText(receivedSupervisor.getSupervisorDirection());
+        introduction.setText(receivedSupervisor.getIntroduction());
+        contact_information.setText(receivedSupervisor.getContact_information());
 
         // 设置Toolbar作为ActionBar
         Toolbar toolbar = findViewById(R.id.toolbar);

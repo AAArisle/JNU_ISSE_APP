@@ -44,18 +44,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.2.0-alpha02")
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.6.0-alpha02")
 
-    testImplementation("androidx.test:core:1.4.0")
-    androidTestImplementation("androidx.test:core:1.4.0")
-    testImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    testImplementation("androidx.test.ext:junit-ktx:1.1.3")
-    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.3")
-    testImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    testImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    testImplementation("androidx.test.espresso:espresso-contrib:3.4.0")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0")
-    testImplementation("org.mockito:mockito-core:3.12.4")
+    implementation ("androidx.tracing:tracing:1.2.0-beta02")
+    testImplementation ("org.json:json:20231013")
 
 }

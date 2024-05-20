@@ -52,6 +52,22 @@ public class SupervisorFragment extends Fragment {
         EditText searchText = inflate.findViewById(R.id.search_edit_text);
         recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
         populateSupervisorsList();
+        for (int i = 0; i < 10; i++) {
+            allSupervisors.add(new Supervisor("导师姓名" + i, "研究方向" + i, R.drawable.avatar));
+        }
+        // 个性化导师
+        allSupervisors.get(0).setSupervisorName("导师0");
+        allSupervisors.get(0).setJob_title("讲师");
+        allSupervisors.get(0).setSupervisorDirection("AI");
+        allSupervisors.get(0).setIntroduction("我是导师0，一名研究方向为人工智能的讲师。致力于探索AI在各个领域的应用，帮助学生掌握最新的技术和知识。热爱教学，乐于分享，期待与你一起探讨AI的无限可能性。");
+        allSupervisors.get(0).setContact_information("10001");
+
+        allSupervisors.get(1).setSupervisorName("导师1");
+        allSupervisors.get(1).setJob_title("副院长");
+        allSupervisors.get(1).setSupervisorDirection("物联网工程");
+        allSupervisors.get(1).setIntroduction("我是导师1，物联网工程副院长。专注于物联网技术的研究和应用，致力于培养学生在智能物联网领域的创新能力和实践能力。热爱教学，乐于分享经验，期待与你一同探索物联网工程的未来发展。");
+        allSupervisors.get(1).setContact_information("10002");
+
         supervisors.addAll(allSupervisors);
         supervisorAdapter = new SupervisorFragment.CustomAdapter(requireActivity(), supervisors);
         recyclerView.setAdapter(supervisorAdapter);
@@ -109,6 +125,7 @@ public class SupervisorFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder viewHolder, int position) {
+            // 设置RecyclerView上视图窗口的信息
             viewHolder.getImageViewAvatar().setImageResource(dataList.get(position).getImageId());
             viewHolder.getTextViewName().setText(dataList.get(position).getSupervisorName());
             viewHolder.getTextViewDirection().setText(dataList.get(position).getSupervisorDirection());
@@ -118,6 +135,9 @@ public class SupervisorFragment extends Fragment {
                     // 在这里处理点击事件，启动详情页面
                     Intent intent = new Intent(context, SupervisorDetailActivity.class);
                     // 传递需要显示的数据，例如可以使用intent.putExtra()方法
+                    int currentPosition = viewHolder.getAdapterPosition();
+                    intent.putExtra("Supervisor", dataList.get(currentPosition));
+                    // 传输intent
                     context.startActivity(intent);
                 }
             });
@@ -149,7 +169,6 @@ public class SupervisorFragment extends Fragment {
             public TextView getTextViewDirection() {
                 return textViewDirection;
             }
-
         }
     }
     public String[] names = {"黄国全","屈挺","郭洪飞","任亚平","闫勉","孙素筠","柳宁","孔锐","杨光华",
