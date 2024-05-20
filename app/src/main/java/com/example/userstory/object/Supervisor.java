@@ -7,6 +7,10 @@ public class Supervisor {
     String direction;
     int imageId;
 
+//    String introduction;
+
+//    String contact_information;
+
     public Supervisor(String name, String direction, int imageId) {
         this.name = name;
         this.direction = direction;
@@ -36,4 +40,20 @@ public class Supervisor {
     public void setImageId(int imageId) {
         this.imageId = imageId;
     }
+
+//    public String getIntroduction() {
+//        return introduction;
+//    }
+//
+//    public void setIntroduction(String introduction) {
+//        this.introduction = introduction;
+//    }
+//
+//    public String getContact_information() {
+//        return contact_information;
+//    }
+//
+//    public void setContact_information(String contact_information) {
+//        this.contact_information = contact_information;
+//    }
 }

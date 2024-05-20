@@ -54,6 +54,13 @@ public class SupervisorFragment extends Fragment {
         for (int i = 0; i < 10; i++) {
             allSupervisors.add(new Supervisor("导师姓名" + i, "研究方向" + i, R.drawable.avatar));
         }
+        // 个性化导师
+//        allSupervisors.get(0).setIntroduction("");
+//        allSupervisors.get(0).setContact_information("");
+
+//        allSupervisors.get(1).setIntroduction("");
+//        allSupervisors.get(1).setContact_information("");
+
         supervisors.addAll(allSupervisors);
         supervisorAdapter = new SupervisorFragment.CustomAdapter(requireActivity(), supervisors);
         recyclerView.setAdapter(supervisorAdapter);
