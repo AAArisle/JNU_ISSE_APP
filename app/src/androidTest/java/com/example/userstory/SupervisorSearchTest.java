@@ -48,13 +48,13 @@ public class SupervisorSearchTest {
                                         1),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("1"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("李军"), closeSoftKeyboard());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.textView_name), withText("导师姓名1"),
+                allOf(withId(R.id.textView_name), withText("李军"),
                         withParent(withParent(withId(R.id.recycler_view))),
                         isDisplayed()));
-        textView.check(matches(withText("导师姓名1")));
+        textView.check(matches(withText("李军")));
 
         ViewInteraction viewGroup = onView(
                 allOf(withParent(allOf(withId(R.id.recycler_view),
