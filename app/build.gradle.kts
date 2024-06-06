@@ -49,6 +49,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.6.0-alpha02")
 
 
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 
 
 

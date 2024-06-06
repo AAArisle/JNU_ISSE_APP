@@ -116,7 +116,7 @@ public class MyFragment extends Fragment {
 
     private boolean authenticateAdmin(String username, String password) {
         // 这里可以进行实际的用户名和密码验证
-        return "admin".equals(username) && "password".equals(password);
+        return "a".equals(username) && "b".equals(password);
     }
 }
 
