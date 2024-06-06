@@ -45,6 +45,11 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
     public int getItemCount() {
         return professions.size();
     }
+    public void updateProfessions(List<Profession> newProfessions) {
+        this.professions = newProfessions;
+        notifyDataSetChanged();
+    }
+
 
     public static class ProfessionViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;

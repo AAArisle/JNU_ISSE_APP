@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.userstory.R;
 
+
 public class MyFragment extends Fragment {
 
     private TextView usernameTextView;
@@ -40,17 +41,7 @@ public class MyFragment extends Fragment {
         optionsListView = view.findViewById(R.id.optionsListView);
         settingsImageView = view.findViewById(R.id.settingsImageView);
 
-        // 设置监听器
-        settingsImageView.setOnClickListener(v -> {
-            // 处理设置图标的点击事件
-        });
 
-        optionsListView.setOnItemClickListener((parent, view1, position, id) -> {
-            // 处理列表项的点击事件，比如跳转到其他Fragment或Activity
-        });
-
-        // 初始化数据
-        loadUserInfo();
 
         return view;
     }
@@ -65,4 +56,8 @@ public class MyFragment extends Fragment {
         // 设置头像的图片资源
         avatarImageView.setImageResource(R.drawable.avatar);
     }
+
+
 }
+
+

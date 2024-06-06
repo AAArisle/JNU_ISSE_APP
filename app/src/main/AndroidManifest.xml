@@ -29,6 +29,8 @@
             android:name=".activity.SupervisorDetailActivity"
             android:exported="false" />
         <activity android:name=".activity.ProfessionDetailActivity" />
+        <activity android:name=".activity.AdminActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

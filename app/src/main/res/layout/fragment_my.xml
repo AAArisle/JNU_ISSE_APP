@@ -11,13 +11,6 @@
         android:layout_height="wrap_content"/>
 
     <!-- 设置图标 -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        android:orientation="vertical">
-
     <ImageView
         android:id="@+id/settingsImageView"
         android:layout_width="wrap_content"
@@ -26,41 +19,34 @@
         android:src="@drawable/ic_menu_settings" />
 
     <!-- 用户头像 -->
-
     <ImageView
         android:id="@+id/avatarImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="false"
         android:layout_gravity="center"
         android:src="@drawable/avatar" />
 
-
-
     <!-- 用户名 -->
-        <TextView
-            android:id="@+id/usernameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/avatarImageView"
-            android:padding="16dp"
-            android:layout_gravity="center"
-            android:text="学生1" />
+    <TextView
+        android:id="@+id/usernameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:text="学生1" />
 
     <!-- 分割线1 -->
-        <View
-            android:id="@+id/line_view1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/usernameTextView"
-            android:background="@android:color/darker_gray" />
+    <View
+        android:id="@+id/line_view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
 
     <!-- 统计数据：申请、关注、消息 -->
     <LinearLayout
         android:id="@+id/statisticsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/line_view1"
         android:padding="16dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -90,22 +76,20 @@
             android:text="0\n消息" />
     </LinearLayout>
 
-        <View
-            android:id="@+id/line_view2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/statisticsLayout"
-            android:background="@android:color/darker_gray" />
+    <!-- 分割线2 -->
+    <View
+        android:id="@+id/line_view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
 
     <!-- 功能列表 -->
-        <ListView
-            android:id="@+id/optionsListView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/line_view2"
-            android:layout_marginTop="16dp"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="0.5dp"
-            android:entries="@array/my_options" />
-    </LinearLayout>
+    <ListView
+        android:id="@+id/optionsListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"
+        android:entries="@array/my_options" />
 </LinearLayout>
