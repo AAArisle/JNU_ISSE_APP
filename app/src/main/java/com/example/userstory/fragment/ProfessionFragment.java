@@ -83,6 +83,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+
 public class ProfessionFragment extends Fragment {
     private RecyclerView recyclerView;
     private ProfessionAdapter professionAdapter;
@@ -93,6 +95,7 @@ public class ProfessionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profession, container, false);
 
+        EditText searchProfession = view.findViewById(R.id.search_profession);
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
@@ -109,10 +112,36 @@ public class ProfessionFragment extends Fragment {
         professionAdapter = new ProfessionAdapter(filteredProfessions, this::navigateToDetail);
         recyclerView.setAdapter(professionAdapter);
 
+        searchProfession.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterProfessions(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
         return view;
     }
 
+    private void filterProfessions(String query) {
+        filteredProfessions.clear();
+        if (query.isEmpty()) {
+            filteredProfessions.addAll(professions);
+        } else {
+            String lowerCaseQuery = query.toLowerCase();
+            filteredProfessions.addAll(professions.stream()
+                    .filter(profession -> profession.getName().toLowerCase().contains(lowerCaseQuery))
+                    .collect(Collectors.toList()));
+        }
+        professionAdapter.notifyDataSetChanged();
+    }
 
     private void navigateToDetail(Profession profession) {
         Intent intent = new Intent(getActivity(), ProfessionDetailActivity.class);
