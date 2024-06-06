@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AdTutorsFragment">
+    tools:context="com.example.userstory.fragment.AdTutorsFragment">
 
     <!-- 这里放置导师页面的内容 -->
     <TextView

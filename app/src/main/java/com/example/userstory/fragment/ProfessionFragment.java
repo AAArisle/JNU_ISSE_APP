@@ -18,6 +18,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.userstory.R;
 import com.example.userstory.activity.ProfessionDetailActivity;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.userstory.R;
+import com.example.userstory.activity.ProfessionDetailActivity;
 import com.example.userstory.object.Profession;
 import com.example.userstory.object.ProfessionAdapter;
 
@@ -95,5 +117,6 @@ public class ProfessionFragment extends Fragment {
         startActivity(intent);
     }
 }
+
 
 
