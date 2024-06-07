@@ -9,23 +9,12 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.userstory.R;
+import com.example.userstory.object.ContactFunc;
 import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
 import com.tencent.tencentmap.mapsdk.maps.TencentMap;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import com.tencent.tencentmap.mapsdk.maps.model.Marker;
 import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
-
-class ContactFunc {
-    String address;
-    String telephone;
-    String email;
-
-    public ContactFunc(String address, String telephone, String email) {
-        this.address = address;
-        this.telephone = telephone;
-        this.email = email;
-    }
-}
 
 public class ContactUsFragment extends Fragment {
     private static String address = "广东省珠海市香洲区前山路206号暨南大学行政楼6楼";
@@ -54,9 +43,9 @@ public class ContactUsFragment extends Fragment {
         TextView text_email = rootView.findViewById(R.id.text_view_email);
         mapView = rootView.findViewById(R.id.mapView);
 
-        text_address.setText(text_address.getText()+contactFunc.address);
-        text_telephone.setText(text_telephone.getText()+contactFunc.telephone);
-        text_email.setText(text_email.getText()+contactFunc.email);
+        text_address.setText(text_address.getText()+contactFunc.getAddress());
+        text_telephone.setText(text_telephone.getText()+contactFunc.getTelephone());
+        text_email.setText(text_email.getText()+contactFunc.getEmail());
 
         TencentMap tencentMap = mapView.getMap();
 
