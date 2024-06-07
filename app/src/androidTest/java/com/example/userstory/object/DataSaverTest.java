@@ -1,6 +1,7 @@
 package com.example.userstory.object;
 
 import com.example.userstory.R;
+import com.google.gson.reflect.TypeToken;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -42,6 +43,20 @@ public class DataSaverTest {
     }
 
     @Test
-    public void load() {
+    public void load() throws IOException {
+        DataSaver dataSaver=new DataSaver();
+        File tempFile = folder.newFile("professions.json");
+
+        List<Profession> professions = new ArrayList<>();
+        professions.add(new Profession("Biology", R.drawable.biology, "Biology is about life.", "Courses cover genetics, etc.", "Requirements include..."));
+        professions.add(new Profession("Computer Science", R.drawable.computer_science, "Study of algorithmic processes.", "Courses include programming, etc.", "Requirements include..."));
+        professions.add(new Profession("Politics", R.drawable.politics, "Politics involves governance.", "Courses include political theory, etc.", "Requirements include..."));
+        dataSaver.save(professions, tempFile.getAbsolutePath());
+
+        List<Profession> new_professions = new ArrayList<>();
+        new_professions = (List<Profession>) dataSaver.load(new TypeToken<List<Profession>>() {}.getType(), tempFile.getAbsolutePath());
+
+        Assert.assertEquals(professions.size(),new_professions.size());
+        Assert.assertEquals(professions.get(2).getName(),new_professions.get(2).getName());
     }
 }
