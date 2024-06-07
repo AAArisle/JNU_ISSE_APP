@@ -10,20 +10,11 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.userstory.R;
+import com.example.userstory.object.LeaderShip;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-class LeaderShip{
-    String name;
-    String intro;
-
-    public LeaderShip(String name, String intro){
-        this.name = name;
-        this.intro = intro;
-    }
-}
 
 public class LeaderShipFragment extends Fragment {
     public static List<LeaderShip> leaderShips = getLeaderShips();
@@ -54,7 +45,7 @@ public class LeaderShipFragment extends Fragment {
 
         TextView textView = rootView.findViewById(R.id.text_view_leader_ship);
         for (LeaderShip leaderShip: leaderShips){
-            textView.setText(textView.getText()+"\n\n"+leaderShip.name+"："+leaderShip.intro);
+            textView.setText(textView.getText()+leaderShip.getName()+"："+leaderShip.getIntro()+"\n\n");
         }
 
         return rootView;

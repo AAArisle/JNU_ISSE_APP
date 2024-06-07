@@ -10,18 +10,8 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.userstory.R;
+import com.example.userstory.object.Notice;
 
-class Notice {
-    String title;
-    String body;
-    String time;
-
-    public Notice(String title, String body, String time) {
-        this.title = title;
-        this.body = body;
-        this.time = time;
-    }
-}
 public class AcademicCommitteeFragment extends Fragment {
     private static String title = "关于成立智能科学与工程学院学术委员会的通知";
     private static String body = "学院各单位：\n" +
@@ -57,9 +47,9 @@ public class AcademicCommitteeFragment extends Fragment {
         TextView text_body = rootView.findViewById(R.id.text_view_body);
         TextView text_time = rootView.findViewById(R.id.text_view_time);
 
-        text_title.setText(notice.title);
-        text_body.setText(notice.body);
-        text_time.setText(notice.time);
+        text_title.setText(notice.getTitle());
+        text_body.setText(notice.getBody());
+        text_time.setText(notice.getTime());
 
         return rootView;
     }

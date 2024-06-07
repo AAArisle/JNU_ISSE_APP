@@ -14,6 +14,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +30,18 @@ import androidx.fragment.app.Fragment;
 
 import com.example.userstory.R;
 import com.example.userstory.activity.AdminActivity;
+import com.example.userstory.object.ContactFunc;
 import com.example.userstory.object.DataSaver;
+import com.example.userstory.object.LeaderShip;
+import com.example.userstory.object.Notice;
+import com.example.userstory.object.Profession;
+import com.example.userstory.object.Supervisor;
+import com.google.gson.reflect.TypeToken;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MyFragment extends Fragment {
@@ -67,6 +78,16 @@ public class MyFragment extends Fragment {
 
         optionsListView.setOnItemClickListener((parent, view1, position, id) -> {
             // 处理列表项的点击事件，比如跳转到其他Fragment或Activity
+            if (position == 0) {
+                if (Environment.isExternalStorageManager()) {
+                    // 已经有权限
+                    importData();
+                } else {
+                    // 引导用户授予权限
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                    startActivity(intent);
+                }
+            }
             if (position == 1) {
                 adminExportData();
             }
@@ -97,6 +118,29 @@ public class MyFragment extends Fragment {
         avatarImageView.setImageResource(R.drawable.avatar);
     }
 
+    private void importData() {
+        Context context = getContext();
+        if (context == null) return;
+
+        // String pathname = context.getFilesDir() + "/data_save/";
+        String pathname = Environment.getExternalStorageDirectory().getPath()+"/Documents/data_save/";
+        DataSaver dataSaver = new DataSaver();
+
+        // 专业的数据
+        professions = (List<Profession>) dataSaver.load(new TypeToken<List<Profession>>() {}.getType(), pathname+"professions.json");
+        // 导师的数据
+        allSupervisors = (ArrayList<Supervisor>) dataSaver.load(new TypeToken<List<Supervisor>>() {}.getType(), pathname+"allSupervisors.json");
+        // 学院的数据
+        leaderShips = (List<LeaderShip>) dataSaver.load(new TypeToken<List<LeaderShip>>() {}.getType(), pathname+"leaderShips.json");    // 学院领导
+        notice = (Notice) dataSaver.load(new TypeToken<Notice>() {}.getType(), pathname+"notice.json");  // 学术委员会的通知
+        intro = (String) dataSaver.load(new TypeToken<String>() {}.getType(), pathname+"intro.json");    // 学院介绍
+        contactFunc = (ContactFunc) dataSaver.load(new TypeToken<ContactFunc>() {}.getType(), pathname+"contactFunc.json");    // 联系方式
+        point1 = (LatLng) dataSaver.load(new TypeToken<LatLng>() {}.getType(), pathname+"point1.json");  //地图的锚点
+        message = (String) dataSaver.load(new TypeToken<String>() {}.getType(), pathname+"message.json");    // 院长寄语
+
+        Toast.makeText(context, "数据导入成功！", Toast.LENGTH_SHORT).show();
+    }
+
     private void adminExportData() {
         Context context = getContext();
         if (context == null) return;
@@ -117,7 +161,8 @@ public class MyFragment extends Fragment {
                 // 密码正确，导出数据
                 DataSaver dataSaver = new DataSaver();
 
-                String pathname = context.getFilesDir() + "/data_save/";
+                // String pathname = context.getFilesDir() + "/data_save/";
+                String pathname = Environment.getExternalStorageDirectory().getPath()+"/Documents/data_save/";
 
                 File directory = new File(pathname);
                 if (!directory.exists()) {
@@ -136,7 +181,11 @@ public class MyFragment extends Fragment {
                 dataSaver.save(point1, pathname+"point1.json");  //地图的锚点
                 dataSaver.save(message, pathname+"message.json");    // 院长寄语
 
-                Toast.makeText(context, "数据导出成功！"+pathname, Toast.LENGTH_SHORT).show();
+                // ArrayList<Object> dataBase = new ArrayList<>();
+                // dataBase.addAll(Arrays.asList(professions,allSupervisors,leaderShips,notice,intro,contactFunc,point1,message));
+                // dataSaver.save(dataBase, pathname+"dataBase.json");     // 总数据
+
+                Toast.makeText(context, "数据导出成功！"+pathname, Toast.LENGTH_LONG).show();
             } else {
                 // 密码错误，显示提示
                 Toast.makeText(context, "用户名或密码错误", Toast.LENGTH_SHORT).show();
