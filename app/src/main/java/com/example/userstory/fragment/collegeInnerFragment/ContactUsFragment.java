@@ -15,10 +15,25 @@ import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import com.tencent.tencentmap.mapsdk.maps.model.Marker;
 import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
 
+class ContactFunc {
+    String address;
+    String telephone;
+    String email;
+
+    public ContactFunc(String address, String telephone, String email) {
+        this.address = address;
+        this.telephone = telephone;
+        this.email = email;
+    }
+}
+
 public class ContactUsFragment extends Fragment {
-    private String address = "广东省珠海市香洲区前山路206号暨南大学行政楼6楼";
-    private String telephone = "0756-8505610";
-    private String email = "osisse@jnu.edu.cn";
+    private static String address = "广东省珠海市香洲区前山路206号暨南大学行政楼6楼";
+    private static String telephone = "0756-8505610";
+    private static String email = "osisse@jnu.edu.cn";
+
+    static public ContactFunc contactFunc = new ContactFunc(address, telephone, email);
+    static public LatLng point1 = new LatLng(22.255925,113.541112);
 
     private com.tencent.tencentmap.mapsdk.maps.MapView mapView = null;
     public ContactUsFragment() {
@@ -39,13 +54,12 @@ public class ContactUsFragment extends Fragment {
         TextView text_email = rootView.findViewById(R.id.text_view_email);
         mapView = rootView.findViewById(R.id.mapView);
 
-        text_address.setText(text_address.getText()+address);
-        text_telephone.setText(text_telephone.getText()+telephone);
-        text_email.setText(text_email.getText()+email);
+        text_address.setText(text_address.getText()+contactFunc.address);
+        text_telephone.setText(text_telephone.getText()+contactFunc.telephone);
+        text_email.setText(text_email.getText()+contactFunc.email);
 
         TencentMap tencentMap = mapView.getMap();
 
-        LatLng point1 = new LatLng(22.255925,113.541112);
         tencentMap.moveCamera(CameraUpdateFactory.newLatLng(point1));
 
         // 创建一个Marker对象
