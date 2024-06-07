@@ -26,8 +26,8 @@ class LeaderShip{
 }
 
 public class LeaderShipFragment extends Fragment {
-    private List<LeaderShip> leaderShips = getLeaderShips();
-    public List<LeaderShip> getLeaderShips(){
+    public static List<LeaderShip> leaderShips = getLeaderShips();
+    public static List<LeaderShip> getLeaderShips(){
         List<LeaderShip> leaderShips = new ArrayList<>();
         leaderShips.addAll(Arrays.asList(
                 new LeaderShip("杨光华","院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。"),
