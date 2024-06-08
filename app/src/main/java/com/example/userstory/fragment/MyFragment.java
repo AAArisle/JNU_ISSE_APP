@@ -1,15 +1,6 @@
 // 【我的】页面
 package com.example.userstory.fragment;
 
-import static com.example.userstory.fragment.ProfessionFragment.professions;
-import static com.example.userstory.fragment.SupervisorFragment.allSupervisors;
-import static com.example.userstory.fragment.collegeInnerFragment.AcademicCommitteeFragment.notice;
-import static com.example.userstory.fragment.collegeInnerFragment.CollegeIntroFragment.intro;
-import static com.example.userstory.fragment.collegeInnerFragment.ContactUsFragment.contactFunc;
-import static com.example.userstory.fragment.collegeInnerFragment.ContactUsFragment.point1;
-import static com.example.userstory.fragment.collegeInnerFragment.DeanMessageFragment.message;
-import static com.example.userstory.fragment.collegeInnerFragment.LeaderShipFragment.leaderShips;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -29,15 +20,6 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.userstory.R;
-import com.example.userstory.activity.AdminActivity;
-import com.example.userstory.object.ContactFunc;
-import com.example.userstory.object.DataSaver;
-import com.example.userstory.object.LeaderShip;
-import com.example.userstory.object.Notice;
-import com.example.userstory.object.Profession;
-import com.example.userstory.object.Supervisor;
-import com.google.gson.reflect.TypeToken;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import com.example.userstory.admin.AdminActivity;
 
 import java.io.File;
@@ -119,90 +101,6 @@ public class MyFragment extends Fragment {
         avatarImageView.setImageResource(R.drawable.avatar);
     }
 
-    private void importData() {
-        Context context = getContext();
-        if (context == null) return;
-
-        // String pathname = context.getFilesDir() + "/data_save/";
-        String pathname = Environment.getExternalStorageDirectory().getPath()+"/Documents/data_save/";
-        DataSaver dataSaver = new DataSaver();
-
-        File directory = new File(pathname);
-        if (!directory.exists()) {
-            Toast.makeText(context, "数据导入失败！\n数据文件不存在！", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // 专业的数据
-        professions = (List<Profession>) dataSaver.load(new TypeToken<List<Profession>>() {}.getType(), pathname+"professions.json");
-        // 导师的数据
-        allSupervisors = (ArrayList<Supervisor>) dataSaver.load(new TypeToken<List<Supervisor>>() {}.getType(), pathname+"allSupervisors.json");
-        // 学院的数据
-        leaderShips = (List<LeaderShip>) dataSaver.load(new TypeToken<List<LeaderShip>>() {}.getType(), pathname+"leaderShips.json");    // 学院领导
-        notice = (Notice) dataSaver.load(new TypeToken<Notice>() {}.getType(), pathname+"notice.json");  // 学术委员会的通知
-        intro = (String) dataSaver.load(new TypeToken<String>() {}.getType(), pathname+"intro.json");    // 学院介绍
-        contactFunc = (ContactFunc) dataSaver.load(new TypeToken<ContactFunc>() {}.getType(), pathname+"contactFunc.json");    // 联系方式
-        point1 = (LatLng) dataSaver.load(new TypeToken<LatLng>() {}.getType(), pathname+"point1.json");  //地图的锚点
-        message = (String) dataSaver.load(new TypeToken<String>() {}.getType(), pathname+"message.json");    // 院长寄语
-
-        Toast.makeText(context, "数据导入成功！", Toast.LENGTH_SHORT).show();
-    }
-
-    private void adminExportData() {
-        Context context = getContext();
-        if (context == null) return;
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        LayoutInflater inflater = getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_admin_login, null);
-        builder.setView(dialogView);
-
-        EditText usernameEditText = dialogView.findViewById(R.id.usernameEditText);
-        EditText passwordEditText = dialogView.findViewById(R.id.passwordEditText);
-
-        builder.setPositiveButton("登录", (dialog, which) -> {
-            String username = usernameEditText.getText().toString();
-            String password = passwordEditText.getText().toString();
-
-            if (authenticateAdmin(username, password)) {
-                // 密码正确，导出数据
-                DataSaver dataSaver = new DataSaver();
-
-                // String pathname = context.getFilesDir() + "/data_save/";
-                String pathname = Environment.getExternalStorageDirectory().getPath()+"/Documents/data_save/";
-
-                File directory = new File(pathname);
-                if (!directory.exists()) {
-                    directory.mkdirs(); // 创建目录
-                }
-
-                // 专业的数据
-                dataSaver.save(professions, pathname+"professions.json");
-                // 导师的数据
-                dataSaver.save(allSupervisors, pathname+"allSupervisors.json");
-                // 学院的数据
-                dataSaver.save(leaderShips, pathname+"leaderShips.json");    // 学院领导
-                dataSaver.save(notice, pathname+"notice.json");  // 学术委员会的通知
-                dataSaver.save(intro, pathname+"intro.json");    // 学院介绍
-                dataSaver.save(contactFunc, pathname+"contactFunc.json");    // 联系方式
-                dataSaver.save(point1, pathname+"point1.json");  //地图的锚点
-                dataSaver.save(message, pathname+"message.json");    // 院长寄语
-
-                // ArrayList<Object> dataBase = new ArrayList<>();
-                // dataBase.addAll(Arrays.asList(professions,allSupervisors,leaderShips,notice,intro,contactFunc,point1,message));
-                // dataSaver.save(dataBase, pathname+"dataBase.json");     // 总数据
-
-                Toast.makeText(context, "数据导出成功！"+pathname, Toast.LENGTH_LONG).show();
-            } else {
-                // 密码错误，显示提示
-                Toast.makeText(context, "用户名或密码错误", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        builder.setNegativeButton("取消", (dialog, which) -> dialog.dismiss());
-
-        builder.create().show();
-    }
     private void showAdminLoginDialog() {
         Context context = getContext();
         if (context == null) return;
