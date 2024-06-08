@@ -1,6 +1,3 @@
-
-
-
 package com.example.userstory.fragment;
 
 import android.content.Intent;
@@ -125,7 +122,7 @@ import java.util.stream.Collectors;
 public class ProfessionFragment extends Fragment {
     private RecyclerView recyclerView;
     private ProfessionAdapter professionAdapter;
-    private List<Profession> professions;
+    static List<Profession> professions;
     private List<Profession> filteredProfessions;
     private ProfessionRepository professionRepository;
 

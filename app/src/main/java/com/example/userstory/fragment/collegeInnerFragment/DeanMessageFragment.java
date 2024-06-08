@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.userstory.R;
 
 public class DeanMessageFragment extends Fragment {
-    private String message = "尊敬的研究生考生：\n" +
+    static public String message = "尊敬的研究生考生：\n" +
             "欢迎您考虑选择暨南大学作为您深造的学府。作为一所历史悠久、享有盛誉的高等学府，暨大一直以培养卓越人才、追求学术卓越为己任。\n" +
             "在暨南大学，您将有机会接受世界一流的学术教育，融入充满活力和创新精神的学术氛围。我们的教师团队由一批具有丰富经验和专业知识的学者组成，他们将为您提供悉心指导和学术支持，助您在学术道路上不断前行。\n" +
             "此外，暨大拥有先进的教学设施和丰富的学术资源，为您提供一个广阔的学术舞台，让您的学术梦想得以实现。我们鼓励学生勇攀学术高峰，培养创新意识和实践能力，助您成为未来的学术领袖和社会栋梁。\n" +

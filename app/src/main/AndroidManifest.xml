@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- 腾讯地图 SDK 要求的权限(开始) -->
+    <!-- 访问网络获取地图服务 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 检查网络可用性 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 访问WiFi状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 需要外部存储写权限用于保存地图缓存 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 获取 device id 辨别设备 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <!--腾讯地图 SDK 要求的权限(开始)-->
-    <!--访问网络获取地图服务-->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!--检查网络可用性-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <!-- 访问WiFi状态 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--需要外部存储写权限用于保存地图缓存-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--获取 device id 辨别设备-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <!--腾讯地图 SDK 要求的权限(结束)-->
+    <!--外部存储读取权限-->
+<!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -26,11 +24,19 @@
         android:theme="@style/Theme.UserStory"
         tools:targetApi="31">
         <activity
-            android:name=".activity.SupervisorDetailActivity"
+            android:name=".admin.SupervisorAddActivity"
             android:exported="false" />
+        <activity
+            android:name=".admin.PhotoAlbumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.SupervisorChangeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.SupervisorDetailActivity"
+            android:exported="true" />
         <activity android:name=".activity.ProfessionDetailActivity" />
-        <activity android:name=".activity.AdminActivity" />
-
+        <activity android:name=".admin.AdminActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -43,9 +49,7 @@
 
         <meta-data
             android:name="TencentMapSDK"
-            android:value="QANBZ-XPA3J-WZKFG-DA2QH-COC7F-OSBMM"/>
+            android:value="QANBZ-XPA3J-WZKFG-DA2QH-COC7F-OSBMM" />
     </application>
 
 </manifest>
-
-

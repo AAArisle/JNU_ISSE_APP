@@ -1,8 +1,11 @@
-// 首页【导师】页面
-package com.example.userstory.fragment;
+package com.example.userstory.admin;
+
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,7 +16,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,36 +27,43 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.userstory.R;
 import com.example.userstory.activity.SupervisorDetailActivity;
 import com.example.userstory.object.Supervisor;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class SupervisorFragment extends Fragment {
+public class AdSupervisorFragment extends Fragment {
 
-
-
-    public SupervisorFragment() {
+    public AdSupervisorFragment() {
         // Required empty public constructor
     }
-    public static SupervisorFragment newInstance(String param1, String param2) {
-        SupervisorFragment fragment = new SupervisorFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    ActivityResultLauncher<Intent> supervisorChangeItemLauncher;
+    ActivityResultLauncher<Intent> supervisorAddItemLauncher;
+    public String[] names = {"黄国全", "屈挺", "郭洪飞", "任亚平", "闫勉", "孙素筠", "柳宁", "孔锐", "杨光华",
+            "郭江凌", "刘晓翔", "施政", "赵阔", "李晓帆", "李军", "董铖", "张鑫源", "李德平", "龚雪沅"};
+    public String[] directions = {"管理科学与工程", "工业物联网、智能制造系统管理、智慧物流与供应链管理", "工业工程",
+            "优化算法、数学规划、绿色制造与再制造、交通调度优化", "人因与工效学、健康信息学、消费者行为学",
+            "公共交通网络设计与运输分配、乘车共享与出租车", "机器人、数控与工业机器人智能控制技术",
+            "机器学习、图像识别", "智慧感知、智能通信、人工智能技术及应用", "数字图像处理", "图像处理与模式识别",
+            "人工智能、智能通信、物联网", "区块链，人工智能，大数据，学科交叉融合应用，云计算",
+            "智能感知，智能信号与信息处理，脑机接口通信", "人工智能技术及应用",
+            "数字微流控系统的电子自动化、信号处理和嵌入式系统", "人工智能、计算智能、大规模优化",
+            "机器人视觉感知与理解", "深度学习、神经网络"};
+    int[] avatars = {R.drawable.avatar1, R.drawable.avatar2, R.drawable.avatar, R.drawable.avatar4,
+            R.drawable.avatar, R.drawable.avatar6, R.drawable.avatar7, R.drawable.avatar8,
+            R.drawable.avatar9, R.drawable.avatar10, R.drawable.avatar11, R.drawable.avatar12,
+            R.drawable.avatar13, R.drawable.avatar14, R.drawable.avatar, R.drawable.avatar16,
+            R.drawable.avatar17, R.drawable.avatar18, R.drawable.avatar19};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_supervisor, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        EditText searchText = view.findViewById(R.id.search_edit_text);
+        View view = inflater.inflate(R.layout.ad_fragment_supervisor, container, false);
+        RecyclerView recyclerView = view.findViewById(R.id.ad_supervisor_recycler_view);
+        EditText searchText = view.findViewById(R.id.ad_supervisor_search_edit_text);
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.ad_supervisor_floatingActionButton);
         recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
+        // 添加导师
         populateSupervisorsList();
         // 个性化导师
         allSupervisors.get(0).setSupervisorName("导师0");
@@ -66,8 +79,8 @@ public class SupervisorFragment extends Fragment {
         allSupervisors.get(1).setContact_information("10002");
 
         supervisors.addAll(allSupervisors);
-        supervisorAdapter = new SupervisorFragment.CustomAdapter(requireActivity(), supervisors);
-        recyclerView.setAdapter(supervisorAdapter);
+        adSupervisorAdapter = new AdSupervisorFragment.CustomAdapter(requireActivity(), supervisors);
+        recyclerView.setAdapter(adSupervisorAdapter);
 
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -80,32 +93,56 @@ public class SupervisorFragment extends Fragment {
                 String searchContent = searchText.getText().toString();
                 supervisors.clear();
                 if (!searchContent.equals("")) {
-                    supervisorAdapter.notifyDataSetChanged();
+                    adSupervisorAdapter.notifyDataSetChanged();
                     for (Supervisor supervisor : allSupervisors) {
                         if (supervisor.getSupervisorName().contains(searchContent) || supervisor.getSupervisorDirection().contains(searchContent)) {
                             supervisors.add(supervisor);
-                            supervisorAdapter.notifyDataSetChanged();
+                            adSupervisorAdapter.notifyDataSetChanged();
                         }
                     }
                 } else {
                     supervisors.addAll(allSupervisors);
-                    supervisorAdapter.notifyDataSetChanged();
+                    adSupervisorAdapter.notifyDataSetChanged();
                 }
             }
-
             @Override
             public void afterTextChanged(Editable s) {
             }
         });
+        //TODO 启动器
+        supervisorAddItemLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        Supervisor supervisor = data.getParcelableExtra("supervisor");
+                        // 添加对象
+                        allSupervisors.add(supervisor);
+                        supervisors.clear();
+                        supervisors.addAll(allSupervisors);
+                        // 刷新对象的显示
+                        adSupervisorAdapter.notifyItemChanged(-1);
+                    } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                        System.out.println("null");
+                    }
+                }
+        );
+        //TODO 加号点击事件
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SupervisorAddActivity.class);
+                supervisorAddItemLauncher.launch(intent);
+            }
+        });
         return view;
     }
-    static ArrayList<Supervisor> allSupervisors = new ArrayList<>();
+
+    ArrayList<Supervisor> allSupervisors = new ArrayList<>();
     ArrayList<Supervisor> supervisors = new ArrayList<>();
-    SupervisorFragment.CustomAdapter supervisorAdapter;
+    AdSupervisorFragment.CustomAdapter adSupervisorAdapter;
 
-
-
-    public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+    public class CustomAdapter extends RecyclerView.Adapter<AdSupervisorFragment.CustomAdapter.ViewHolder> {
         private ArrayList<Supervisor> dataList;
         private Context context;
 
@@ -115,29 +152,19 @@ public class SupervisorFragment extends Fragment {
         }
 
         @Override
-        public SupervisorFragment.CustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public AdSupervisorFragment.CustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.supervisor_item_layout, parent, false);
-            return new SupervisorFragment.CustomAdapter.ViewHolder(view);
+            return new AdSupervisorFragment.CustomAdapter.ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder viewHolder, int position) {
+        public void onBindViewHolder(AdSupervisorFragment.CustomAdapter.ViewHolder viewHolder, int position) {
             // 设置RecyclerView上视图窗口的信息
             viewHolder.getImageViewAvatar().setImageResource(dataList.get(position).getImageId());
             viewHolder.getTextViewName().setText(dataList.get(position).getSupervisorName());
             viewHolder.getTextViewDirection().setText(dataList.get(position).getSupervisorDirection());
-            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 在这里处理点击事件，启动详情页面
-                    Intent intent = new Intent(context, SupervisorDetailActivity.class);
-                    // 传递需要显示的数据，例如可以使用intent.putExtra()方法
-                    int currentPosition = viewHolder.getAdapterPosition();
-                    intent.putExtra("Supervisor", dataList.get(currentPosition));
-                    // 传输intent
-                    context.startActivity(intent);
-                }
-            });
+            //TODO Item点击事件
+
             // 绑定数据到 ViewHolder 中的视图
         }
 
@@ -150,6 +177,7 @@ public class SupervisorFragment extends Fragment {
             private ImageView imageViewAvatar;
             private TextView textViewName;
             private TextView textViewDirection;
+
             public ViewHolder(View view) {
                 super(view);
                 // 初始化视图组件
@@ -157,36 +185,24 @@ public class SupervisorFragment extends Fragment {
                 textViewName = view.findViewById(R.id.textView_name);
                 textViewDirection = view.findViewById(R.id.textView_direction);
             }
-            public ImageView getImageViewAvatar(){
+
+            public ImageView getImageViewAvatar() {
                 return imageViewAvatar;
             }
+
             public TextView getTextViewName() {
                 return textViewName;
             }
+
             public TextView getTextViewDirection() {
                 return textViewDirection;
             }
         }
     }
-    public String[] names = {"黄国全","屈挺","郭洪飞","任亚平","闫勉","孙素筠","柳宁","孔锐","杨光华",
-            "郭江凌","刘晓翔","施政","赵阔","李晓帆","李军","董铖","张鑫源","李德平","龚雪沅"};
-    public String[] directions = {"管理科学与工程","工业物联网、智能制造系统管理、智慧物流与供应链管理","工业工程",
-            "优化算法、数学规划、绿色制造与再制造、交通调度优化","人因与工效学、健康信息学、消费者行为学",
-            "公共交通网络设计与运输分配、乘车共享与出租车","机器人、数控与工业机器人智能控制技术",
-            "机器学习、图像识别","智慧感知、智能通信、人工智能技术及应用", "数字图像处理","图像处理与模式识别",
-            "人工智能、智能通信、物联网","区块链，人工智能，大数据，学科交叉融合应用，云计算",
-            "智能感知，智能信号与信息处理，脑机接口通信","人工智能技术及应用",
-            "数字微流控系统的电子自动化、信号处理和嵌入式系统","人工智能、计算智能、大规模优化",
-            "机器人视觉感知与理解","深度学习、神经网络"};
-    int[] avatars = {R.drawable.avatar1,R.drawable.avatar2,R.drawable.avatar,R.drawable.avatar4,
-            R.drawable.avatar,R.drawable.avatar6,R.drawable.avatar7,R.drawable.avatar8,
-            R.drawable.avatar9, R.drawable.avatar10,R.drawable.avatar11,R.drawable.avatar12,
-            R.drawable.avatar13,R.drawable.avatar14,R.drawable.avatar,R.drawable.avatar16,
-            R.drawable.avatar17,R.drawable.avatar18,R.drawable.avatar19};
 
     public void populateSupervisorsList() {
         // 清空列表以确保不会添加重复的导师信息
-        allSupervisors.clear();
+//        allSupervisors.clear();
 
         // 遍历姓名和研究方向数组，创建Supervisor对象并添加到列表中
         for (int i = 0; i < names.length; i++) {
