@@ -63,7 +63,7 @@ public class AdProfessionsFragment extends Fragment {
         professionRepository = new ProfessionRepository(getContext());
         professions = professionRepository.getAllProfessions();
 
-        professionAdapter = new ProfessionAdapter(professions);
+        professionAdapter = new ProfessionAdapter(professions, this::showEditDialog);
         recyclerView.setAdapter(professionAdapter);
 
         return view;
@@ -99,6 +99,45 @@ public class AdProfessionsFragment extends Fragment {
             }
         });
         builder.setNegativeButton("取消", null);
+        builder.create().show();
+    }
+
+    private void showEditDialog(Profession profession) {
+        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_add_profession, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Edit Profession");
+        builder.setView(dialogView);
+
+        EditText nameInput = dialogView.findViewById(R.id.edit_profession_name);
+        EditText introInput = dialogView.findViewById(R.id.edit_profession_intro);
+        EditText coursesInput = dialogView.findViewById(R.id.edit_profession_courses);
+        EditText requirementsInput = dialogView.findViewById(R.id.edit_profession_requirements);
+
+        nameInput.setText(profession.getName());
+        introInput.setText(profession.getIntroDetail());
+        coursesInput.setText(profession.getCoursesDetail());
+        requirementsInput.setText(profession.getRequirementsDetail());
+
+        builder.setPositiveButton("Save", (dialog, which) -> {
+            String name = nameInput.getText().toString();
+            String intro = introInput.getText().toString();
+            String courses = coursesInput.getText().toString();
+            String requirements = requirementsInput.getText().toString();
+
+            if (!name.isEmpty() && !intro.isEmpty() && !courses.isEmpty() && !requirements.isEmpty()) {
+                profession.setName(name);
+                profession.setIntroDetail(intro);
+                profession.setCoursesDetail(courses);
+                profession.setRequirementsDetail(requirements);
+                professionRepository.updateProfession(profession);
+                professions.clear();
+                professions.addAll(professionRepository.getAllProfessions());
+                professionAdapter.notifyDataSetChanged();
+            } else {
+                Toast.makeText(getContext(), "All fields are required", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", null);
         builder.create().show();
     }
 
