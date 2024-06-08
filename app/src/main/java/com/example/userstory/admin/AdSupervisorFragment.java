@@ -127,6 +127,24 @@ public class AdSupervisorFragment extends Fragment {
                     }
                 }
         );
+        supervisorChangeItemLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        // 获取数据
+                        Intent data = result.getData();
+                        Supervisor supervisor = data.getParcelableExtra("supervisor");
+                        int position = data.getIntExtra("position", 0);
+                        // 修改对象
+                        allSupervisors.set(position, supervisor);
+                        supervisors.clear();
+                        supervisors.addAll(allSupervisors);
+                        // 刷新对象的显示
+                        adSupervisorAdapter.notifyItemChanged(position);
+                    } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                        System.out.println("null");
+                    }
+                });
         //TODO 加号点击事件
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,7 +182,15 @@ public class AdSupervisorFragment extends Fragment {
             viewHolder.getTextViewName().setText(dataList.get(position).getSupervisorName());
             viewHolder.getTextViewDirection().setText(dataList.get(position).getSupervisorDirection());
             //TODO Item点击事件
-
+            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intentChange = new Intent(getContext(), SupervisorChangeActivity.class);
+                    intentChange.putExtra("supervisor", dataList.get(viewHolder.getAdapterPosition()));
+                    intentChange.putExtra("position", viewHolder.getAdapterPosition());
+                    supervisorChangeItemLauncher.launch(intentChange);
+                }
+            });
             // 绑定数据到 ViewHolder 中的视图
         }
 
@@ -202,7 +228,7 @@ public class AdSupervisorFragment extends Fragment {
 
     public void populateSupervisorsList() {
         // 清空列表以确保不会添加重复的导师信息
-//        allSupervisors.clear();
+        allSupervisors.clear();
 
         // 遍历姓名和研究方向数组，创建Supervisor对象并添加到列表中
         for (int i = 0; i < names.length; i++) {
