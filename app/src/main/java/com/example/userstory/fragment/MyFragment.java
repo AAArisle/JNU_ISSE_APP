@@ -126,6 +126,12 @@ public class MyFragment extends Fragment {
         String pathname = Environment.getExternalStorageDirectory().getPath()+"/Documents/data_save/";
         DataSaver dataSaver = new DataSaver();
 
+        File directory = new File(pathname);
+        if (!directory.exists()) {
+            Toast.makeText(context, "数据导入失败！\n数据文件不存在！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // 专业的数据
         professions = (List<Profession>) dataSaver.load(new TypeToken<List<Profession>>() {}.getType(), pathname+"professions.json");
         // 导师的数据
