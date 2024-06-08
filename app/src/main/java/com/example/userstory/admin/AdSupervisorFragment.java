@@ -182,7 +182,28 @@ public class AdSupervisorFragment extends Fragment {
             viewHolder.getTextViewName().setText(dataList.get(position).getSupervisorName());
             viewHolder.getTextViewDirection().setText(dataList.get(position).getSupervisorDirection());
             //TODO Item点击事件
-
+            viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle("删除");
+                    builder.setMessage("确定删除这条数据么？");
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            allSupervisors.remove(viewHolder.getAdapterPosition());
+                            adSupervisorAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                        }
+                    });
+                    builder.create().show();
+                    return false;
+                }
+            });
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

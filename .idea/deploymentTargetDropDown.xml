@@ -5,19 +5,16 @@
       <entry key="App">
         <State />
       </entry>
-      <entry key="SupervisorSearchTest">
+      <entry key="ChangeSupervisorTest">
+        <State />
+      </entry>
+      <entry key="DeleteSupervisorTest">
         <State />
       </entry>
       <entry key="addSupervisorTest()">
         <State />
       </entry>
-      <entry key="mainActivityTest231()">
-        <State />
-      </entry>
-      <entry key="professionDetailActivityTestByYao()">
-        <State />
-      </entry>
-      <entry key="supervisorSearchTest()">
+      <entry key="deleteSupervisorTest()">
         <State />
       </entry>
     </value>
