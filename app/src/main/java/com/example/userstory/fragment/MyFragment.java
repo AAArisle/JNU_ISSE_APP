@@ -1,10 +1,13 @@
 // 【我的】页面
 package com.example.userstory.fragment;
 
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +21,16 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.userstory.R;
+
+import com.example.userstory.object.Profession;
+import com.example.userstory.object.Supervisor;
+
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import com.example.userstory.admin.AdminActivity;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MyFragment extends Fragment {
@@ -56,6 +67,19 @@ public class MyFragment extends Fragment {
 
         optionsListView.setOnItemClickListener((parent, view1, position, id) -> {
             // 处理列表项的点击事件，比如跳转到其他Fragment或Activity
+            if (position == 0) {
+                if (Environment.isExternalStorageManager()) {
+                    // 已经有权限
+                    importData();
+                } else {
+                    // 引导用户授予权限
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                    startActivity(intent);
+                }
+            }
+            if (position == 1) {
+                adminExportData();
+            }
             if (position == 2) { // Assuming the 3rd item is "管理员登录"
                 showAdminLoginDialog();
             }
@@ -65,7 +89,7 @@ public class MyFragment extends Fragment {
         loadUserInfo();
 
         // 添加选项数据
-        String[] options = {"选项1", "选项2", "管理员登录"};
+        String[] options = {"导入数据", "导出数据", "管理员模式"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, options);
         optionsListView.setAdapter(adapter);
 
@@ -83,6 +107,69 @@ public class MyFragment extends Fragment {
         avatarImageView.setImageResource(R.drawable.avatar);
     }
 
+    private void importData() {
+        Context context = getContext();
+        if (context == null) return;
+
+        // String pathname = context.getFilesDir() + "/data_save/";
+        String pathname = Environment.getExternalStorageDirectory().getPath()+"/Documents/data_save/";
+
+
+        File directory = new File(pathname);
+        if (!directory.exists()) {
+            Toast.makeText(context, "数据导入失败！\n数据文件不存在！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        Toast.makeText(context, "数据导入成功！", Toast.LENGTH_SHORT).show();
+    }
+
+    private void adminExportData() {
+        Context context = getContext();
+        if (context == null) return;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_admin_login, null);
+        builder.setView(dialogView);
+
+        EditText usernameEditText = dialogView.findViewById(R.id.usernameEditText);
+        EditText passwordEditText = dialogView.findViewById(R.id.passwordEditText);
+
+        builder.setPositiveButton("登录", (dialog, which) -> {
+            String username = usernameEditText.getText().toString();
+            String password = passwordEditText.getText().toString();
+
+            if (authenticateAdmin(username, password)) {
+                // 密码正确，导出数据
+
+
+                // String pathname = context.getFilesDir() + "/data_save/";
+                String pathname = Environment.getExternalStorageDirectory().getPath()+"/Documents/data_save/";
+
+                File directory = new File(pathname);
+                if (!directory.exists()) {
+                    directory.mkdirs(); // 创建目录
+                }
+
+
+
+                // ArrayList<Object> dataBase = new ArrayList<>();
+                // dataBase.addAll(Arrays.asList(professions,allSupervisors,leaderShips,notice,intro,contactFunc,point1,message));
+                // dataSaver.save(dataBase, pathname+"dataBase.json");     // 总数据
+
+                Toast.makeText(context, "数据导出成功！"+pathname, Toast.LENGTH_LONG).show();
+            } else {
+                // 密码错误，显示提示
+                Toast.makeText(context, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("取消", (dialog, which) -> dialog.dismiss());
+
+        builder.create().show();
+    }
     private void showAdminLoginDialog() {
         Context context = getContext();
         if (context == null) return;

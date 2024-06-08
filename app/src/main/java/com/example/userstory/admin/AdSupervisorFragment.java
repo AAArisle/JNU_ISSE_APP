@@ -127,6 +127,7 @@ public class AdSupervisorFragment extends Fragment {
                     }
                 }
         );
+
         //TODO 加号点击事件
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,7 +203,7 @@ public class AdSupervisorFragment extends Fragment {
 
     public void populateSupervisorsList() {
         // 清空列表以确保不会添加重复的导师信息
-//        allSupervisors.clear();
+        allSupervisors.clear();
 
         // 遍历姓名和研究方向数组，创建Supervisor对象并添加到列表中
         for (int i = 0; i < names.length; i++) {
