@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.userstory.fragment.AdProfessionsFragment">
+    tools:context="com.example.userstory.admin.AdProfessionsFragment">
 
     <!-- 这里放置专业页面的内容 -->
     <TextView

@@ -6,6 +6,7 @@ import com.example.userstory.object.Supervisor;
 import java.util.ArrayList;
 
 // SupervisorDataManager.java
+// 这个类似乎不需要，因为之后要做数据持久化，所有数据不再以这种明文的方式储存在代码中，此类的作者可以考虑一下删除这个类
 public class SupervisorDataManager {
     private final ArrayList<Supervisor> allSupervisors = new ArrayList<>();
 

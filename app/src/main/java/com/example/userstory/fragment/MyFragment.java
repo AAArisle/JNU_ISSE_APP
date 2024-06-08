@@ -18,7 +18,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.userstory.R;
-import com.example.userstory.activity.AdminActivity;
+import com.example.userstory.admin.AdminActivity;
 
 
 
@@ -116,7 +116,7 @@ public class MyFragment extends Fragment {
 
     private boolean authenticateAdmin(String username, String password) {
         // 这里可以进行实际的用户名和密码验证
-        return "a".equals(username) && "b".equals(password);
+        return "".equals(username) && "".equals(password);
     }
 }
 

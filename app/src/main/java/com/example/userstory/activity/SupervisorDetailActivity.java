@@ -22,7 +22,10 @@ public class SupervisorDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_detail);
         // 接收intent以便个性化界面
-        Supervisor receivedSupervisor = getIntent().getParcelableExtra("Supervisor", Supervisor.class);
+        Supervisor receivedSupervisor = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            receivedSupervisor = getIntent().getParcelableExtra("Supervisor", Supervisor.class);
+        }
 
         // 展示导师具体信息
         ImageView imageView = this.findViewById(R.id.imageView);

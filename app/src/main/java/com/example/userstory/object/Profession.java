@@ -2,7 +2,9 @@
 package com.example.userstory.object;
 
 
-public class Profession {
+import java.io.Serializable;
+
+public class Profession implements Serializable {
     private String name;
     private int imageResId;
     private String introDetail;

@@ -3,6 +3,7 @@ package com.example.userstory.object;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+
 // 实现Parcelable接口以便数据传输
 public class Supervisor implements Parcelable {
     String name;

@@ -37,14 +37,14 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class AdminActivityTest {
+public class AddSupervisorTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void adminActivityTest() {
+    public void addSupervisorTest() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.menu_my), withContentDescription("我的"),
                         childAtPosition(
@@ -63,26 +63,6 @@ public class AdminActivityTest {
                 .atPosition(2);
         materialTextView.perform(click());
 
-        ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.usernameEditText),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.custom),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText.perform(replaceText("admin"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.passwordEditText),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.custom),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText2.perform(replaceText("password"), closeSoftKeyboard());
-
         ViewInteraction materialButton = onView(
                 allOf(withId(android.R.id.button1), withText("登录"),
                         childAtPosition(
@@ -92,12 +72,70 @@ public class AdminActivityTest {
                                 3)));
         materialButton.perform(scrollTo(), click());
 
-        ViewInteraction textView = onView(
-                allOf(withText("管理员界面"),
-                        withParent(allOf(withId(R.id.admin_layout),
-                                withParent(withId(android.R.id.content)))),
+        ViewInteraction floatingActionButton = onView(
+                allOf(withId(R.id.ad_supervisor_floatingActionButton),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.FrameLayout")),
+                                        0),
+                                1),
                         isDisplayed()));
-        textView.check(matches(withText("管理员界面")));
+        floatingActionButton.perform(click());
+
+        ViewInteraction materialTextView2 = onView(
+                allOf(withId(R.id.ad_supervisor_textView_add), withText("导师姓名"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                        1),
+                                1),
+                        isDisplayed()));
+        materialTextView2.perform(click());
+
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.editText),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.custom),
+                                        0),
+                                0),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("123"), closeSoftKeyboard());
+
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(android.R.id.button1), withText("确认修改"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.ScrollView")),
+                                        0),
+                                3)));
+        materialButton2.perform(scrollTo(), click());
+
+        ViewInteraction materialButton3 = onView(
+                allOf(withId(R.id.ad_supervisor_OK_button_add), withText("确认添加"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                        1),
+                                13),
+                        isDisplayed()));
+        materialButton3.perform(click());
+
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.ad_supervisor_search_edit_text),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                        0),
+                                0),
+                        isDisplayed()));
+        appCompatEditText2.perform(replaceText("123"), closeSoftKeyboard());
+
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.textView_name), withText("123"),
+                        withParent(withParent(withId(R.id.ad_supervisor_recycler_view))),
+                        isDisplayed()));
+        textView.check(matches(withText("123")));
     }
 
     private static Matcher<View> childAtPosition(
