@@ -110,9 +110,31 @@ public class AdSupervisorFragment extends Fragment {
             }
         });
         //TODO 启动器
-
+        supervisorAddItemLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        Supervisor supervisor = data.getParcelableExtra("supervisor");
+                        // 添加对象
+                        allSupervisors.add(supervisor);
+                        supervisors.clear();
+                        supervisors.addAll(allSupervisors);
+                        // 刷新对象的显示
+                        adSupervisorAdapter.notifyItemChanged(-1);
+                    } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                        System.out.println("null");
+                    }
+                }
+        );
         //TODO 加号点击事件
-
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SupervisorAddActivity.class);
+                supervisorAddItemLauncher.launch(intent);
+            }
+        });
         return view;
     }
 
