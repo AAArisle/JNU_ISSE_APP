@@ -63,7 +63,7 @@ public class AdProfessionsFragment extends Fragment {
         professionRepository = new ProfessionRepository(getContext());
         professions = professionRepository.getAllProfessions();
 
-        professionAdapter = new ProfessionAdapter(professions, this::showEditDialog);
+        professionAdapter = new ProfessionAdapter(professions, this::showEditDialog, this::showDeleteDialog);
         recyclerView.setAdapter(professionAdapter);
 
         return view;
@@ -141,5 +141,17 @@ public class AdProfessionsFragment extends Fragment {
         builder.create().show();
     }
 
-
+    private void showDeleteDialog(Profession profession) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("删除专业");
+        builder.setMessage("你确定要删除这个专业吗？");
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            professionRepository.deleteProfession(profession.getId());
+            professions.clear();
+            professions.addAll(professionRepository.getAllProfessions());
+            professionAdapter.notifyDataSetChanged();
+        });
+        builder.setNegativeButton("No", null);
+        builder.create().show();
+    }
 }
