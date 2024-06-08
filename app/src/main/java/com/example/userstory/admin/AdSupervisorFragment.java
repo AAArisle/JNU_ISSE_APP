@@ -182,6 +182,7 @@ public class AdSupervisorFragment extends Fragment {
             viewHolder.getTextViewName().setText(dataList.get(position).getSupervisorName());
             viewHolder.getTextViewDirection().setText(dataList.get(position).getSupervisorDirection());
             //TODO Item点击事件
+
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
