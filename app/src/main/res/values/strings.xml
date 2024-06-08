@@ -17,4 +17,17 @@
     <string name="address">地址：</string>
     <string name="telephone">电话：</string>
     <string name="email">邮箱：</string>
+    <string name="profession_name">专业名字</string>
+    <string name="profession_intro">专业简介</string>
+    <string name="profession_courses">专业课程</string>
+    <string name="profession_requirements">申请要求</string>
+    <string name="add_profession">Add Profession</string>
+    <string name="edit_profession">Edit Profession</string>
+    <string name="add">添加</string>
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="profession_added">Profession added</string>
+    <string name="profession_updated">Profession updated</string>
+
+
 </resources>

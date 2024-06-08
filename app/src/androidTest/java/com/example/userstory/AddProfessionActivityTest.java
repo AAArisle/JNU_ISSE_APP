@@ -3,6 +3,7 @@ package com.example.userstory;
 
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
@@ -37,14 +38,14 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class AdminActivityTest {
+public class AddProfessionActivityTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void adminActivityTest() {
+    public void addProfessionActivityTest() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.menu_my), withContentDescription("我的"),
                         childAtPosition(
@@ -71,7 +72,7 @@ public class AdminActivityTest {
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("admin"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("a"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.passwordEditText),
@@ -81,7 +82,7 @@ public class AdminActivityTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("password"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("b"), closeSoftKeyboard());
 
         ViewInteraction materialButton = onView(
                 allOf(withId(android.R.id.button1), withText("登录"),
@@ -92,12 +93,92 @@ public class AdminActivityTest {
                                 3)));
         materialButton.perform(scrollTo(), click());
 
-        ViewInteraction textView = onView(
-                allOf(withText("管理员界面"),
-                        withParent(allOf(withId(R.id.admin_layout),
-                                withParent(withId(android.R.id.content)))),
+        ViewInteraction tabView = onView(
+                allOf(withContentDescription("专业"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.tab_layout),
+                                        0),
+                                1),
                         isDisplayed()));
-        textView.check(matches(withText("管理员界面")));
+        tabView.perform(click());
+
+        ViewInteraction floatingActionButton = onView(
+                allOf(withId(R.id.fab_add_profession), withContentDescription("Add Profession"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.FrameLayout")),
+                                        0),
+                                1),
+                        isDisplayed()));
+        floatingActionButton.perform(click());
+
+        ViewInteraction appCompatEditText3 = onView(
+                allOf(withId(R.id.edit_profession_name),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(androidx.appcompat.R.id.custom),
+                                        0),
+                                0),
+                        isDisplayed()));
+        appCompatEditText3.perform(replaceText("biology"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText4 = onView(
+                allOf(withId(R.id.edit_profession_intro),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(androidx.appcompat.R.id.custom),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText4.perform(replaceText(".."), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText5 = onView(
+                allOf(withId(R.id.edit_profession_courses),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(androidx.appcompat.R.id.custom),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatEditText5.perform(replaceText(".."), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText6 = onView(
+                allOf(withId(R.id.edit_profession_requirements),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(androidx.appcompat.R.id.custom),
+                                        0),
+                                3),
+                        isDisplayed()));
+        appCompatEditText6.perform(replaceText(".."), closeSoftKeyboard());
+
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(android.R.id.button1), withText("添加"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(androidx.appcompat.R.id.buttonPanel),
+                                        0),
+                                3)));
+        materialButton2.perform(scrollTo(), click());
+
+        pressBack();
+
+        ViewInteraction bottomNavigationItemView2 = onView(
+                allOf(withId(R.id.menu_profession), withContentDescription("专业"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.bottom_navi_view),
+                                        0),
+                                1),
+                        isDisplayed()));
+        bottomNavigationItemView2.perform(click());
+
+        ViewInteraction linearLayout = onView(
+                allOf(withParent(allOf(withId(R.id.card_view),
+                                withParent(withId(R.id.recycler_view)))),
+                        isDisplayed()));
+        linearLayout.check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(
