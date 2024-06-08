@@ -10,24 +10,15 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.userstory.R;
+import com.example.userstory.object.LeaderShip;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class LeaderShip{
-    String name;
-    String intro;
-
-    public LeaderShip(String name, String intro){
-        this.name = name;
-        this.intro = intro;
-    }
-}
-
 public class LeaderShipFragment extends Fragment {
-    private List<LeaderShip> leaderShips = getLeaderShips();
-    public List<LeaderShip> getLeaderShips(){
+    public static List<LeaderShip> leaderShips = getLeaderShips();
+    public static List<LeaderShip> getLeaderShips(){
         List<LeaderShip> leaderShips = new ArrayList<>();
         leaderShips.addAll(Arrays.asList(
                 new LeaderShip("杨光华","院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。"),
@@ -54,7 +45,7 @@ public class LeaderShipFragment extends Fragment {
 
         TextView textView = rootView.findViewById(R.id.text_view_leader_ship);
         for (LeaderShip leaderShip: leaderShips){
-            textView.setText(textView.getText()+"\n\n"+leaderShip.name+"："+leaderShip.intro);
+            textView.setText(textView.getText()+leaderShip.getName()+"："+leaderShip.getIntro()+"\n\n");
         }
 
         return rootView;

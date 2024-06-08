@@ -99,7 +99,7 @@ public class SupervisorFragment extends Fragment {
         });
         return view;
     }
-    public ArrayList<Supervisor> allSupervisors = new ArrayList<>();
+    static ArrayList<Supervisor> allSupervisors = new ArrayList<>();
     ArrayList<Supervisor> supervisors = new ArrayList<>();
     SupervisorFragment.CustomAdapter supervisorAdapter;
 
