@@ -51,19 +51,19 @@ public class SupervisorFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         EditText searchText = view.findViewById(R.id.search_edit_text);
         recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
-        populateSupervisorsList();
+        // populateSupervisorsList();
         // 个性化导师
-        allSupervisors.get(0).setSupervisorName("导师0");
-        allSupervisors.get(0).setJob_title("讲师");
-        allSupervisors.get(0).setSupervisorDirection("AI");
-        allSupervisors.get(0).setIntroduction("我是导师0，一名研究方向为人工智能的讲师。致力于探索AI在各个领域的应用，帮助学生掌握最新的技术和知识。热爱教学，乐于分享，期待与你一起探讨AI的无限可能性。");
-        allSupervisors.get(0).setContact_information("10001");
-
-        allSupervisors.get(1).setSupervisorName("导师1");
-        allSupervisors.get(1).setJob_title("副院长");
-        allSupervisors.get(1).setSupervisorDirection("物联网工程");
-        allSupervisors.get(1).setIntroduction("我是导师1，物联网工程副院长。专注于物联网技术的研究和应用，致力于培养学生在智能物联网领域的创新能力和实践能力。热爱教学，乐于分享经验，期待与你一同探索物联网工程的未来发展。");
-        allSupervisors.get(1).setContact_information("10002");
+        // allSupervisors.get(0).setSupervisorName("导师0");
+        // allSupervisors.get(0).setJob_title("讲师");
+        // allSupervisors.get(0).setSupervisorDirection("AI");
+        // allSupervisors.get(0).setIntroduction("我是导师0，一名研究方向为人工智能的讲师。致力于探索AI在各个领域的应用，帮助学生掌握最新的技术和知识。热爱教学，乐于分享，期待与你一起探讨AI的无限可能性。");
+        // allSupervisors.get(0).setContact_information("10001");
+        //
+        // allSupervisors.get(1).setSupervisorName("导师1");
+        // allSupervisors.get(1).setJob_title("副院长");
+        // allSupervisors.get(1).setSupervisorDirection("物联网工程");
+        // allSupervisors.get(1).setIntroduction("我是导师1，物联网工程副院长。专注于物联网技术的研究和应用，致力于培养学生在智能物联网领域的创新能力和实践能力。热爱教学，乐于分享经验，期待与你一同探索物联网工程的未来发展。");
+        // allSupervisors.get(1).setContact_information("10002");
 
         supervisors.addAll(allSupervisors);
         supervisorAdapter = new SupervisorFragment.CustomAdapter(requireActivity(), supervisors);
@@ -99,7 +99,7 @@ public class SupervisorFragment extends Fragment {
         });
         return view;
     }
-    static ArrayList<Supervisor> allSupervisors = new ArrayList<>();
+    static public ArrayList<Supervisor> allSupervisors = new ArrayList<>();
     ArrayList<Supervisor> supervisors = new ArrayList<>();
     SupervisorFragment.CustomAdapter supervisorAdapter;
 

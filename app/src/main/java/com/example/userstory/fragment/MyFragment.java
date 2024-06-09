@@ -21,10 +21,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.userstory.R;
 import com.example.userstory.admin.AdminActivity;
+import com.example.userstory.object.DataSaver;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MyFragment extends Fragment {
@@ -101,6 +100,58 @@ public class MyFragment extends Fragment {
         avatarImageView.setImageResource(R.drawable.avatar);
     }
 
+    private void importData() {
+        Context context = getContext();
+        if (context == null) return;
+
+        String pathname = Environment.getExternalStorageDirectory().getPath()+"/Documents/data_save/";
+        DataSaver dataSaver = new DataSaver();
+
+        File directory = new File(pathname);
+        if (!directory.exists()) {
+            Toast.makeText(context, "数据导入失败！\n数据文件不存在！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        dataSaver.loadAll(pathname);
+
+        Toast.makeText(context, "数据导入成功！", Toast.LENGTH_SHORT).show();
+    }
+
+    private void adminExportData() {
+        Context context = getContext();
+        if (context == null) return;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_admin_login, null);
+        builder.setView(dialogView);
+
+        EditText usernameEditText = dialogView.findViewById(R.id.usernameEditText);
+        EditText passwordEditText = dialogView.findViewById(R.id.passwordEditText);
+
+        builder.setPositiveButton("登录", (dialog, which) -> {
+            String username = usernameEditText.getText().toString();
+            String password = passwordEditText.getText().toString();
+
+            if (authenticateAdmin(username, password)) {
+                // 密码正确，导出数据
+                DataSaver dataSaver = new DataSaver();
+
+                String pathname = Environment.getExternalStorageDirectory().getPath()+"/Documents/data_save/";
+                dataSaver.saveAll(pathname);
+
+                Toast.makeText(context, "数据导出成功！"+pathname, Toast.LENGTH_LONG).show();
+            } else {
+                // 密码错误，显示提示
+                Toast.makeText(context, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("取消", (dialog, which) -> dialog.dismiss());
+
+        builder.create().show();
+    }
     private void showAdminLoginDialog() {
         Context context = getContext();
         if (context == null) return;
