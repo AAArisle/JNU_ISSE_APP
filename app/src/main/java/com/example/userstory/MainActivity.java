@@ -7,12 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.userstory.R;
 import com.example.userstory.fragment.CollegeFragment;
 import com.example.userstory.fragment.MyFragment;
 import com.example.userstory.fragment.ProfessionFragment;
 import com.example.userstory.fragment.SupervisorFragment;
+import com.example.userstory.object.DataSaver;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     private Fragment activeFragment;
@@ -22,9 +24,32 @@ public class MainActivity extends AppCompatActivity {
     private MyFragment myFragment;
 
     @Override
+    protected void onPause() {
+        super.onPause();
+
+        // 存储数据
+        String pathname = this.getFilesDir() + "/data_save/";
+
+        DataSaver dataSaver = new DataSaver();
+        dataSaver.saveAll(pathname);
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // 导入数据
+        String pathname = this.getFilesDir() + "/data_save/";
+        File directory = new File(pathname);
+
+        if (directory.exists()) {
+            DataSaver dataSaver = new DataSaver();
+            dataSaver.loadAll(pathname);
+        }
+
+        // 底部导航栏
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navi_view);
 
         //初始化 Fragment
