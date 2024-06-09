@@ -38,7 +38,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.drawerlayout:drawerlayout:1.0.0")
     implementation("androidx.test.espresso.idling:idling-concurrent:3.5.1")
-    implementation("androidx.fragment:fragment-testing:1.7.1")
+    //implementation("androidx.fragment:fragment-testing:1.7.1")
     implementation("androidx.test.espresso:espresso-intents:3.5.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.tracing:tracing:1.2.0-beta02")
@@ -54,4 +54,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.6.0-alpha02")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-livedata:2.4.0")
 }

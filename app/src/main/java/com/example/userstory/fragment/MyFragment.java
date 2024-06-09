@@ -4,8 +4,10 @@ package com.example.userstory.fragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -156,6 +158,12 @@ public class MyFragment extends Fragment {
         Context context = getContext();
         if (context == null) return;
 
+        // 检查是否已经保存了管理员凭据
+        String[] credentials = getAdminCredentials();
+        String savedUsername = credentials[0];
+        String savedPassword = credentials[1];
+
+        // 显示管理员登录对话框
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_admin_login, null);
@@ -164,12 +172,17 @@ public class MyFragment extends Fragment {
         EditText usernameEditText = dialogView.findViewById(R.id.usernameEditText);
         EditText passwordEditText = dialogView.findViewById(R.id.passwordEditText);
 
+        // 自动填充保存的用户名和密码
+        usernameEditText.setText(savedUsername);
+        passwordEditText.setText(savedPassword);
+
         builder.setPositiveButton("登录", (dialog, which) -> {
             String username = usernameEditText.getText().toString();
             String password = passwordEditText.getText().toString();
 
             if (authenticateAdmin(username, password)) {
                 // 密码正确，进入管理员界面
+                saveAdminCredentials(username, password); // 保存管理员凭据
                 Intent intent = new Intent(context, AdminActivity.class);
                 startActivity(intent);
             } else {
@@ -183,9 +196,25 @@ public class MyFragment extends Fragment {
         builder.create().show();
     }
 
+
+
     private boolean authenticateAdmin(String username, String password) {
         // 这里可以进行实际的用户名和密码验证
-        return "".equals(username) && "".equals(password);
+        return "name".equals(username) && "pwd".equals(password);
+    }
+    private void saveAdminCredentials(String username, String password) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("username", username);
+        editor.putString("password", password);
+        editor.apply();
+    }
+
+    private String[] getAdminCredentials() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String username = preferences.getString("username", "");
+        String password = preferences.getString("password", "");
+        return new String[]{username, password};
     }
 }
 
