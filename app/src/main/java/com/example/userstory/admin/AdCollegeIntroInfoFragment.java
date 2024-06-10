@@ -58,6 +58,10 @@ public class AdCollegeIntroInfoFragment extends Fragment {
             collegeIntroEditText.setVisibility(View.GONE);
             buttonSave.setVisibility(View.GONE);
             collegeIntro.setVisibility(View.VISIBLE);
+            // 获取InputMethodManager
+//            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            // 隐藏软键盘
+//            imm.hideSoftInputFromWindow(collegeIntroEditText.getWindowToken(), 0);
         });
 
         return rootView;

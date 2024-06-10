@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/userstory/ProfessionDetailActivityTestByYao.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/userstory/SupervisorTestByYao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/userstory/collegeDeanMessageTestbyYao.java" charset="GB2312" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/userstory/object/DataSaver.java" charset="GB2312" />
   </component>
 </project>

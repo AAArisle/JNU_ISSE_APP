@@ -5,12 +5,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.userstory.fragment.collegeInnerFragment.AcademicCommitteeFragment;
+import com.example.userstory.admin.AdAcademicCommitteeFragment;
+import com.example.userstory.admin.AdDeanMessageFragment;
 import com.example.userstory.admin.AdCollegeIntroInfoFragment;
+import com.example.userstory.admin.AdOrganizationStructureFragment;
 import com.example.userstory.fragment.collegeInnerFragment.ContactUsFragment;
-import com.example.userstory.fragment.collegeInnerFragment.DeanMessageFragment;
 import com.example.userstory.admin.AdLeaderShipFragment;
-import com.example.userstory.fragment.collegeInnerFragment.OrganizationStructureFragment;
+import com.example.userstory.fragment.collegeInnerFragment.DeanMessageFragment;
 
 public class AdPagerAdapter extends FragmentStateAdapter{
     public AdPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
@@ -27,11 +28,11 @@ public class AdPagerAdapter extends FragmentStateAdapter{
             case 1:
                 return new AdLeaderShipFragment(); // 学院领导
             case 2:
-                return new OrganizationStructureFragment(); // 组织结构
+                return new AdOrganizationStructureFragment(); // 组织结构
             case 3:
-                return new AcademicCommitteeFragment(); // 学术委员会
+                return new AdAcademicCommitteeFragment(); // 学术委员会
             case 4:
-                return new DeanMessageFragment(); // 院长寄语
+                return new AdDeanMessageFragment(); // 院长寄语
             case 5:
                 return new ContactUsFragment(); // 联系我们
             default:
