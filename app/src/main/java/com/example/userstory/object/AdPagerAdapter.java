@@ -34,7 +34,7 @@ public class AdPagerAdapter extends FragmentStateAdapter{
             case 4:
                 return new AdDeanMessageFragment(); // 院长寄语
             case 5:
-                return new ContactUsFragment(); // 联系我们
+                return new AdContactUsFragment(); // 联系我们
             default:
                 return null;
         }
