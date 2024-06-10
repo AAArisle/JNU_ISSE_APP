@@ -1,5 +1,7 @@
 package com.example.userstory.object;
 
+import androidx.annotation.NonNull;
+
 public class Notice {
     private String title;
     private String body;
@@ -22,4 +24,14 @@ public class Notice {
     public String getTime() {
         return time;
     }
+    public void setTitle(String Title) {
+        this.title=Title;
+    }
+    public void setBody(String Body) {
+        this.body=Body;
+    }
+    public void setTime(String Time) {
+        this.time=Time;
+    }
+
 }

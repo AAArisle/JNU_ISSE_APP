@@ -23,34 +23,59 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="保存"
-            android:visibility="gone" />
+            android:text="保存" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/text_view_address"
+    <EditText
+        android:id="@+id/edit_text_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="@string/address"
         android:padding="16dp"
         android:textSize="18sp" />
-    <TextView
-        android:id="@+id/text_view_telephone"
+    <EditText
+        android:id="@+id/edit_text_telephone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="@string/telephone"
         android:padding="16dp"
         android:textSize="18sp" />
-    <TextView
-        android:id="@+id/text_view_email"
+    <EditText
+        android:id="@+id/edit_text_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="@string/email"
         android:padding="16dp"
         android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/white">
+
+        <EditText
+            android:id="@+id/EditText_x"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:textSize="18sp"
+            android:hint="x"/>
+
+
+        <EditText
+            android:id="@+id/EditText_y"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:textSize="18sp"
+            android:hint="y"/>
+    </LinearLayout>
 
     <com.tencent.tencentmap.mapsdk.maps.TextureMapView
         android:id="@+id/mapView"

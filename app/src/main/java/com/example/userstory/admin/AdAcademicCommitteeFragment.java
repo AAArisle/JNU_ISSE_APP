@@ -16,27 +16,15 @@ import com.example.userstory.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.userstory.fragment.collegeInnerFragment.AcademicCommitteeFragment.notice;
+
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AdAcademicCommitteeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class AdAcademicCommitteeFragment extends Fragment {
-
-    private static String title = "关于成立智能科学与工程学院学术委员会的通知";
-    private static String body = "学院各单位：\n" +
-            "　　根据《暨南大学关于推进学术委员会建设工作的指导意见》《暨南大学学术委员会章程》等文件，学院完成智能科学与工程学院学术委员会的组建工作，现将委员会名单公布如下：\n" +
-            "主　　　任：黄国全\n" +
-            "常务副主任：屈　挺\n" +
-            "副　主　任：孔　锐\n" +
-            "委　　　员：（按姓氏笔画顺序）\n" +
-            "吕广庆　刘晓翔　杨光华　徐素秀\n" +
-            "秘　　　书：刘煜琼　王晓红";
-    private static String time = "\n" +
-            "\n" +
-            "智能科学与工程学院\n" +
-            "\n" +
-            "2019年7月11日";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -89,10 +77,26 @@ public class AdAcademicCommitteeFragment extends Fragment {
         EditText edit_text_title = rootView.findViewById(R.id.edit_text_title);
         EditText edit_text_body = rootView.findViewById(R.id.edit_text_body);
         EditText edit_text_time = rootView.findViewById(R.id.edit_text_time);
+        if(null==notice.getTitle()) {
+            notice.setTitle("关于成立智能科学与工程学院学术委员会的通知");
+            notice.setBody("学院各单位：\n" +
+                    "　　根据《暨南大学关于推进学术委员会建设工作的指导意见》《暨南大学学术委员会章程》等文件，学院完成智能科学与工程学院学术委员会的组建工作，现将委员会名单公布如下：\n" +
+                    "主　　　任：黄国全\n" +
+                    "常务副主任：屈　挺\n" +
+                    "副　主　任：孔　锐\n" +
+                    "委　　　员：（按姓氏笔画顺序）\n" +
+                    "吕广庆　刘晓翔　杨光华　徐素秀\n" +
+                    "秘　　　书：刘煜琼　王晓红");
+            notice.setTime("\n" +
+                    "\n" +
+                    "智能科学与工程学院\n" +
+                    "\n" +
+                    "2019年7月11日");
 
-        edit_text_title.setText(title);
-        edit_text_body.setText(body);
-        edit_text_time.setText(time);
+        }
+        edit_text_title.setText(notice.getTitle());
+        edit_text_body.setText(notice.getBody());
+        edit_text_time.setText(notice.getTime());
 
         List<EditText> allEditTexts = new ArrayList<>();
         allEditTexts.add(rootView.findViewById(R.id.edit_text_title));
@@ -109,17 +113,19 @@ public class AdAcademicCommitteeFragment extends Fragment {
 
         // 为所有的EditText设置同一个监听器
         for (EditText editText : allEditTexts) {
-//            editText.setText("你好！");
             editText.setOnFocusChangeListener(showSaveButtonListener);
         }
 
         buttonSave.setOnClickListener(v -> {
             // 为所有的EditText设置同一个监听器
-            for (EditText editText : allEditTexts) {
-                String editedIntro = editText.getText().toString();
-                if (!TextUtils.isEmpty(editedIntro)) {
-                }
-            }
+//            for (EditText editText : allEditTexts) {
+//                String editedIntro = editText.getText().toString();
+//                if (!TextUtils.isEmpty(editedIntro)) {
+//                }
+//            }
+            notice.setTitle(edit_text_title.getText().toString());
+            notice.setBody(edit_text_body.getText().toString());
+            notice.setTime(edit_text_time.getText().toString());
             buttonSave.setVisibility(View.GONE);
             // 获取InputMethodManager
 //            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);

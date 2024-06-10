@@ -22,4 +22,16 @@ public class ContactFunc {
     public String getEmail() {
         return email;
     }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
