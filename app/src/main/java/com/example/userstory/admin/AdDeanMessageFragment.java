@@ -112,7 +112,7 @@ public class AdDeanMessageFragment extends Fragment {
                     message = editedIntro;
                 }
             }
-            buttonSave.setVisibility(View.GONE);
+//            buttonSave.setVisibility(View.GONE);
             // 获取InputMethodManager
 //            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             // 隐藏软键盘
