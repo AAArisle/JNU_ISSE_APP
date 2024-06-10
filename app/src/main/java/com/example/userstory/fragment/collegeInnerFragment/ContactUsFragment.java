@@ -24,7 +24,7 @@ public class ContactUsFragment extends Fragment {
     private static String email = null;
 
     static public ContactFunc contactFunc = new ContactFunc(address, telephone, email);
-    static public LatLng point1 = new LatLng(22.255925,113.541112);
+    static public LatLng point1 = new LatLng(22.255925,113.541112);;
 
     private com.tencent.tencentmap.mapsdk.maps.MapView mapView = null;
     public ContactUsFragment() {
@@ -56,6 +56,11 @@ public class ContactUsFragment extends Fragment {
         text_email.setText(contactFunc.getEmail());
 
         TencentMap tencentMap = mapView.getMap();
+
+        if (null==point1)
+        {
+            point1=new LatLng(22.255925,113.541112);
+        }
 
         tencentMap.moveCamera(CameraUpdateFactory.newLatLng(point1));
 
