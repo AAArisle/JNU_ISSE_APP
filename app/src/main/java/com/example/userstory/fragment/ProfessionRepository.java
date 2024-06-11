@@ -2,19 +2,35 @@ package com.example.userstory.fragment;
 
 
 
+import static com.tencent.mapsdk.internal.aaa.getContext;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
+import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProfessionRepository {
     private DatabaseHelper dbHelper;
+    private Context context;
 
     public ProfessionRepository(Context context) {
+
         dbHelper = new DatabaseHelper(context);
+        this.context = context;
     }
 
     public List<Profession> getAllProfessions() {
@@ -74,4 +90,68 @@ public class ProfessionRepository {
 
         db.delete(DatabaseHelper.TABLE_PROFESSIONS, selection, selectionArgs);
     }
+    public void importProfessionsData() {
+        Context context = getContext();
+        if (context == null) return;
+
+        String pathname = Environment.getExternalStorageDirectory().getPath() + "/Documents/data_save/professions.json";
+        File file = new File(pathname);
+        if (!file.exists()) {
+            Toast.makeText(context, "数据导入失败！\n专业数据文件不存在！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        try {
+            String json = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
+            JSONArray jsonArray = new JSONArray(json);
+
+            ProfessionRepository professionRepository = new ProfessionRepository(context);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                Profession profession = new Profession(
+                        jsonObject.getString("name"),
+                        jsonObject.getInt("image"),
+                        jsonObject.getString("intro"),
+                        jsonObject.getString("courses"),
+                        jsonObject.getString("requirements")
+                );
+                professionRepository.addProfession(profession);
+            }
+            Toast.makeText(context, "专业数据导入成功！", Toast.LENGTH_SHORT).show();
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(context, "数据导入失败！", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void exportProfessionsData() {
+        List<Profession> professionList = getAllProfessions();
+
+        JSONArray jsonArray = new JSONArray();
+        for (Profession profession : professionList) {
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("id", profession.getId());
+                jsonObject.put("name", profession.getName());
+                jsonObject.put("image", profession.getImageResId());
+                jsonObject.put("intro", profession.getIntroDetail());
+                jsonObject.put("courses", profession.getCoursesDetail());
+                jsonObject.put("requirements", profession.getRequirementsDetail());
+                jsonArray.put(jsonObject);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        String pathname = Environment.getExternalStorageDirectory().getPath() + "/Documents/data_save/professions.json";
+        File file = new File(pathname);
+
+        try (FileWriter fileWriter = new FileWriter(file)) {
+            fileWriter.write(jsonArray.toString());
+            Toast.makeText(context, "专业数据导出成功！" + pathname, Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(context, "数据导出失败！", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

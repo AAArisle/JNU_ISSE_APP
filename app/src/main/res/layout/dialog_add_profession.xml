@@ -5,11 +5,17 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <Spinner
+        android:id="@+id/image_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
     <EditText
         android:id="@+id/edit_profession_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="专业名称" />
+        android:hint="专业名" />
 
     <EditText
         android:id="@+id/edit_profession_intro"
