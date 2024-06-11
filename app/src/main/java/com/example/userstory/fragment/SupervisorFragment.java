@@ -51,7 +51,9 @@ public class SupervisorFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         EditText searchText = view.findViewById(R.id.search_edit_text);
         recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
-        populateSupervisorsList();
+        if (allSupervisors == null) {
+            populateSupervisorsList();
+        }
         // 个性化导师
         // allSupervisors.get(0).setSupervisorName("导师0");
         // allSupervisors.get(0).setJob_title("讲师");
