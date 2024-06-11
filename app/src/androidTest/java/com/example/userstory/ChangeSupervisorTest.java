@@ -63,7 +63,25 @@ public class ChangeSupervisorTest {
                                 7)))
                 .atPosition(2);
         materialTextView.perform(click());
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.usernameEditText),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.custom),
+                                        0),
+                                0),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("name"), closeSoftKeyboard());
 
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.passwordEditText),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.custom),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText2.perform(replaceText("pwd"), closeSoftKeyboard());
         ViewInteraction materialButton = onView(
                 allOf(withId(android.R.id.button1), withText("登录"),
                         childAtPosition(
@@ -81,7 +99,7 @@ public class ChangeSupervisorTest {
         recyclerView.perform(actionOnItemAtPosition(0, click()));
 
         ViewInteraction materialTextView2 = onView(
-                allOf(withId(R.id.ad_supervisor_textView), withText("导师0"),
+                allOf(withId(R.id.ad_supervisor_textView), withText("黄国全"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
@@ -90,7 +108,7 @@ public class ChangeSupervisorTest {
                         isDisplayed()));
         materialTextView2.perform(click());
 
-        ViewInteraction appCompatEditText = onView(
+        ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.editText),
                         childAtPosition(
                                 childAtPosition(
@@ -98,7 +116,7 @@ public class ChangeSupervisorTest {
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("supervisor0"), closeSoftKeyboard());
+        appCompatEditText3.perform(replaceText("supervisor0"), closeSoftKeyboard());
 
         ViewInteraction materialButton2 = onView(
                 allOf(withId(android.R.id.button1), withText("确认修改"),
@@ -119,7 +137,7 @@ public class ChangeSupervisorTest {
                         isDisplayed()));
         materialButton3.perform(click());
 
-        ViewInteraction appCompatEditText2 = onView(
+        ViewInteraction appCompatEditText4 = onView(
                 allOf(withId(R.id.ad_supervisor_search_edit_text),
                         childAtPosition(
                                 childAtPosition(
@@ -127,7 +145,7 @@ public class ChangeSupervisorTest {
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("supervisor0"), closeSoftKeyboard());
+        appCompatEditText4.perform(replaceText("supervisor0"), closeSoftKeyboard());
 
         ViewInteraction textView = onView(
                 allOf(withId(R.id.textView_name), withText("supervisor0"),

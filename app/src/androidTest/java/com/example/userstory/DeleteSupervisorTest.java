@@ -65,7 +65,25 @@ public class DeleteSupervisorTest {
                                 7)))
                 .atPosition(2);
         materialTextView.perform(click());
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.usernameEditText),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.custom),
+                                        0),
+                                0),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("name"), closeSoftKeyboard());
 
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.passwordEditText),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.custom),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText2.perform(replaceText("pwd"), closeSoftKeyboard());
         ViewInteraction materialButton = onView(
                 allOf(withId(android.R.id.button1), withText("登录"),
                         childAtPosition(
@@ -91,7 +109,7 @@ public class DeleteSupervisorTest {
                                 3)));
         materialButton2.perform(scrollTo(), click());
 
-        ViewInteraction appCompatEditText = onView(
+        ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.ad_supervisor_search_edit_text),
                         childAtPosition(
                                 childAtPosition(
@@ -99,7 +117,7 @@ public class DeleteSupervisorTest {
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("0"), closeSoftKeyboard());
+        appCompatEditText3.perform(replaceText("0"), closeSoftKeyboard());
 
         ViewInteraction viewGroup = onView(
                 allOf(withParent(allOf(withId(R.id.ad_supervisor_recycler_view),
