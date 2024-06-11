@@ -104,7 +104,7 @@ public class MyFragment extends Fragment {
         Context context = getContext();
         if (context == null) return;
 
-        String pathname = Environment.getExternalStorageDirectory().getPath()+"/Documents/data_save/";
+        String pathname = Environment.getExternalStorageDirectory().getPath() + "/Documents/data_save/";
         DataSaver dataSaver = new DataSaver();
 
         File directory = new File(pathname);
@@ -114,6 +114,9 @@ public class MyFragment extends Fragment {
         }
 
         dataSaver.loadAll(pathname);
+
+        ProfessionRepository professionRepository = new ProfessionRepository(context);
+        professionRepository.importProfessionsData();
 
         Toast.makeText(context, "数据导入成功！", Toast.LENGTH_SHORT).show();
     }
@@ -135,15 +138,16 @@ public class MyFragment extends Fragment {
             String password = passwordEditText.getText().toString();
 
             if (authenticateAdmin(username, password)) {
-                // 密码正确，导出数据
                 DataSaver dataSaver = new DataSaver();
 
-                String pathname = Environment.getExternalStorageDirectory().getPath()+"/Documents/data_save/";
+                String pathname = Environment.getExternalStorageDirectory().getPath() + "/Documents/data_save/";
                 dataSaver.saveAll(pathname);
 
-                Toast.makeText(context, "数据导出成功！"+pathname, Toast.LENGTH_LONG).show();
+                ProfessionRepository professionRepository = new ProfessionRepository(context);
+                professionRepository.exportProfessionsData();
+
+                Toast.makeText(context, "数据导出成功！" + pathname, Toast.LENGTH_LONG).show();
             } else {
-                // 密码错误，显示提示
                 Toast.makeText(context, "用户名或密码错误", Toast.LENGTH_SHORT).show();
             }
         });
@@ -152,6 +156,7 @@ public class MyFragment extends Fragment {
 
         builder.create().show();
     }
+
     private void showAdminLoginDialog() {
         Context context = getContext();
         if (context == null) return;

@@ -28,6 +28,14 @@
     <string name="cancel">取消</string>
     <string name="profession_added">Profession added</string>
     <string name="profession_updated">Profession updated</string>
+    <string-array name="image_names">
+        <item>Biology</item>
+        <item>Computer Science</item>
+        <item>Politics</item>
+        <item>Philosophy</item>
+        <item>Maths</item>
+        <item>AI</item>
+    </string-array>
 
 
 </resources>
