@@ -6,6 +6,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.longClick;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -33,21 +34,20 @@ import androidx.test.filters.LargeTest;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class AdChangeProfessionInformationMainActivityTest {
+public class AdDeleteProfessionActivityTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void adChangeProfessionInformationMainActivityTest() {
+    public void adDeleteProfessionActivityTest() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.menu_my), withContentDescription("我的"),
                         childAtPosition(
@@ -74,7 +74,7 @@ public class AdChangeProfessionInformationMainActivityTest {
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("a"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("name"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.passwordEditText),
@@ -84,7 +84,7 @@ public class AdChangeProfessionInformationMainActivityTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("b"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("pwd"), closeSoftKeyboard());
 
         ViewInteraction materialButton = onView(
                 allOf(withId(android.R.id.button1), withText("登录"),
@@ -121,9 +121,9 @@ public class AdChangeProfessionInformationMainActivityTest {
                                 childAtPosition(
                                         withId(androidx.appcompat.R.id.custom),
                                         0),
-                                0),
+                                1),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("biology"), closeSoftKeyboard());
+        appCompatEditText3.perform(replaceText("1"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText4 = onView(
                 allOf(withId(R.id.edit_profession_intro),
@@ -131,9 +131,9 @@ public class AdChangeProfessionInformationMainActivityTest {
                                 childAtPosition(
                                         withId(androidx.appcompat.R.id.custom),
                                         0),
-                                1),
+                                2),
                         isDisplayed()));
-        appCompatEditText4.perform(replaceText("1"), closeSoftKeyboard());
+        appCompatEditText4.perform(replaceText("2"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.edit_profession_courses),
@@ -141,9 +141,9 @@ public class AdChangeProfessionInformationMainActivityTest {
                                 childAtPosition(
                                         withId(androidx.appcompat.R.id.custom),
                                         0),
-                                2),
+                                3),
                         isDisplayed()));
-        appCompatEditText5.perform(replaceText("2"), closeSoftKeyboard());
+        appCompatEditText5.perform(replaceText("3"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.edit_profession_requirements),
@@ -151,9 +151,9 @@ public class AdChangeProfessionInformationMainActivityTest {
                                 childAtPosition(
                                         withId(androidx.appcompat.R.id.custom),
                                         0),
-                                3),
+                                4),
                         isDisplayed()));
-        appCompatEditText6.perform(replaceText("3"), closeSoftKeyboard());
+        appCompatEditText6.perform(replaceText("4"), closeSoftKeyboard());
 
         ViewInteraction materialButton2 = onView(
                 allOf(withId(android.R.id.button1), withText("添加"),
@@ -169,90 +169,10 @@ public class AdChangeProfessionInformationMainActivityTest {
                         childAtPosition(
                                 withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
                                 0)));
-        recyclerView.perform(actionOnItemAtPosition(0, click()));
-
-        ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.edit_profession_name), withText("biology"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(androidx.appcompat.R.id.custom),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText7.perform(replaceText("maths"));
-
-        ViewInteraction appCompatEditText8 = onView(
-                allOf(withId(R.id.edit_profession_name), withText("maths"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(androidx.appcompat.R.id.custom),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText8.perform(closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText9 = onView(
-                allOf(withId(R.id.edit_profession_intro), withText("1"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(androidx.appcompat.R.id.custom),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText9.perform(replaceText(".."));
-
-        ViewInteraction appCompatEditText10 = onView(
-                allOf(withId(R.id.edit_profession_intro), withText(".."),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(androidx.appcompat.R.id.custom),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText10.perform(closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText11 = onView(
-                allOf(withId(R.id.edit_profession_courses), withText("2"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(androidx.appcompat.R.id.custom),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText11.perform(replaceText(".."));
-
-        ViewInteraction appCompatEditText12 = onView(
-                allOf(withId(R.id.edit_profession_courses), withText(".."),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(androidx.appcompat.R.id.custom),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText12.perform(closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText13 = onView(
-                allOf(withId(R.id.edit_profession_requirements), withText("3"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(androidx.appcompat.R.id.custom),
-                                        0),
-                                3),
-                        isDisplayed()));
-        appCompatEditText13.perform(replaceText(".."));
-
-        ViewInteraction appCompatEditText14 = onView(
-                allOf(withId(R.id.edit_profession_requirements), withText(".."),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(androidx.appcompat.R.id.custom),
-                                        0),
-                                3),
-                        isDisplayed()));
-        appCompatEditText14.perform(closeSoftKeyboard());
+        recyclerView.perform(actionOnItemAtPosition(0, longClick()));
 
         ViewInteraction materialButton3 = onView(
-                allOf(withId(android.R.id.button1), withText("Save"),
+                allOf(withId(android.R.id.button1), withText("Yes"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(androidx.appcompat.R.id.buttonPanel),
@@ -274,52 +194,9 @@ public class AdChangeProfessionInformationMainActivityTest {
 
         ViewInteraction recyclerView2 = onView(
                 allOf(withId(R.id.recycler_view),
-                        childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                2)));
-        recyclerView2.perform(actionOnItemAtPosition(0, click()));
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.textView), withText("maths"),
-                        withParent(allOf(withId(R.id.constraintLayout),
-                                withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
+                        withParent(withParent(withId(R.id.frame_layout))),
                         isDisplayed()));
-        textView.check(matches(withText("maths")));
-
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.requirements_detail), withText(".."),
-                        withParent(allOf(withId(R.id.constraintLayout),
-                                withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
-                        isDisplayed()));
-        textView2.check(matches(withText("..")));
-
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.intro_detail), withText(".."),
-                        withParent(allOf(withId(R.id.constraintLayout),
-                                withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
-                        isDisplayed()));
-        textView3.check(matches(withText("..")));
-
-        ViewInteraction textView4 = onView(
-                allOf(withId(R.id.intro_detail), withText(".."),
-                        withParent(allOf(withId(R.id.constraintLayout),
-                                withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
-                        isDisplayed()));
-        textView4.check(matches(withText("..")));
-
-        ViewInteraction textView5 = onView(
-                allOf(withId(R.id.course_detail), withText(".."),
-                        withParent(allOf(withId(R.id.constraintLayout),
-                                withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
-                        isDisplayed()));
-        textView5.check(matches(withText("..")));
-
-        ViewInteraction textView6 = onView(
-                allOf(withId(R.id.course_detail), withText(".."),
-                        withParent(allOf(withId(R.id.constraintLayout),
-                                withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
-                        isDisplayed()));
-        textView6.check(matches(withText("..")));
+        recyclerView2.check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(

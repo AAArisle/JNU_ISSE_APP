@@ -3,7 +3,6 @@ package com.example.userstory;
 
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
@@ -45,7 +44,7 @@ public class AddProfessionActivityTest {
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void addProfessionActivityTest() {
+    public void addProfession3ActivityTest() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.menu_my), withContentDescription("我的"),
                         childAtPosition(
@@ -72,7 +71,7 @@ public class AddProfessionActivityTest {
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("a"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("name"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.passwordEditText),
@@ -82,7 +81,7 @@ public class AddProfessionActivityTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("b"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("pwd"), closeSoftKeyboard());
 
         ViewInteraction materialButton = onView(
                 allOf(withId(android.R.id.button1), withText("登录"),
@@ -119,7 +118,7 @@ public class AddProfessionActivityTest {
                                 childAtPosition(
                                         withId(androidx.appcompat.R.id.custom),
                                         0),
-                                0),
+                                1),
                         isDisplayed()));
         appCompatEditText3.perform(replaceText("biology"), closeSoftKeyboard());
 
@@ -129,9 +128,9 @@ public class AddProfessionActivityTest {
                                 childAtPosition(
                                         withId(androidx.appcompat.R.id.custom),
                                         0),
-                                1),
+                                2),
                         isDisplayed()));
-        appCompatEditText4.perform(replaceText(".."), closeSoftKeyboard());
+        appCompatEditText4.perform(replaceText("1"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.edit_profession_courses),
@@ -139,9 +138,9 @@ public class AddProfessionActivityTest {
                                 childAtPosition(
                                         withId(androidx.appcompat.R.id.custom),
                                         0),
-                                2),
+                                3),
                         isDisplayed()));
-        appCompatEditText5.perform(replaceText(".."), closeSoftKeyboard());
+        appCompatEditText5.perform(replaceText("2"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.edit_profession_requirements),
@@ -149,9 +148,9 @@ public class AddProfessionActivityTest {
                                 childAtPosition(
                                         withId(androidx.appcompat.R.id.custom),
                                         0),
-                                3),
+                                4),
                         isDisplayed()));
-        appCompatEditText6.perform(replaceText(".."), closeSoftKeyboard());
+        appCompatEditText6.perform(replaceText("3"), closeSoftKeyboard());
 
         ViewInteraction materialButton2 = onView(
                 allOf(withId(android.R.id.button1), withText("添加"),
@@ -162,23 +161,11 @@ public class AddProfessionActivityTest {
                                 3)));
         materialButton2.perform(scrollTo(), click());
 
-        pressBack();
-
-        ViewInteraction bottomNavigationItemView2 = onView(
-                allOf(withId(R.id.menu_profession), withContentDescription("专业"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bottom_navi_view),
-                                        0),
-                                1),
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.text_view), withText("biology"),
+                        withParent(withParent(withId(R.id.card_view))),
                         isDisplayed()));
-        bottomNavigationItemView2.perform(click());
-
-        ViewInteraction linearLayout = onView(
-                allOf(withParent(allOf(withId(R.id.card_view),
-                                withParent(withId(R.id.recycler_view)))),
-                        isDisplayed()));
-        linearLayout.check(matches(isDisplayed()));
+        textView.check(matches(withText("biology")));
     }
 
     private static Matcher<View> childAtPosition(
