@@ -15,23 +15,23 @@
         android:id="@+id/edit_profession_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Profession Name" />
+        android:hint="专业名" />
 
     <EditText
         android:id="@+id/edit_profession_intro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Profession Introduction" />
+        android:hint="专业简介" />
 
     <EditText
         android:id="@+id/edit_profession_courses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Profession Courses" />
+        android:hint="专业课程" />
 
     <EditText
         android:id="@+id/edit_profession_requirements"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Profession Requirements" />
+        android:hint="申请要求" />
 </LinearLayout>

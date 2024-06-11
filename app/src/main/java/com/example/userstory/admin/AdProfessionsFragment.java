@@ -1,34 +1,14 @@
 package com.example.userstory.admin;
 
-
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.userstory.R;
-import com.example.userstory.fragment.ProfessionRepository;
-import com.example.userstory.fragment.Profession;
-import com.example.userstory.fragment.ProfessionAdapter;
-
-import java.util.List;
-
-
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -49,6 +29,15 @@ public class AdProfessionsFragment extends Fragment {
     private ProfessionAdapter professionAdapter;
     private List<Profession> professions;
     private ProfessionRepository professionRepository;
+    private int[] imageResIds = {
+            R.drawable.biology,
+            R.drawable.computer_science,
+            R.drawable.politics,
+            R.drawable.philosophy,
+            R.drawable.maths,
+            R.drawable.ai
+    };
+    private int selectedImageResId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,6 +60,25 @@ public class AdProfessionsFragment extends Fragment {
 
     private void showAddDialog() {
         View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_add_profession, null);
+        Spinner imageSpinner = dialogView.findViewById(R.id.image_spinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.image_names, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        imageSpinner.setAdapter(adapter);
+
+        imageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedImageResId = imageResIds[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                selectedImageResId = imageResIds[0]; // default image
+            }
+        });
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Add Profession");
         builder.setView(dialogView);
@@ -85,11 +93,8 @@ public class AdProfessionsFragment extends Fragment {
             String courses = coursesInput.getText().toString();
             String requirements = requirementsInput.getText().toString();
 
-            // 默认图片，这里可以修改为动态选择图片
-            int imageResId = R.drawable.biology;
-
             if (!name.isEmpty() && !intro.isEmpty() && !courses.isEmpty() && !requirements.isEmpty()) {
-                Profession profession = new Profession(name, imageResId, intro, courses, requirements);
+                Profession profession = new Profession(name, selectedImageResId, intro, courses, requirements);
                 professionRepository.addProfession(profession);
                 professions.clear();
                 professions.addAll(professionRepository.getAllProfessions());
@@ -104,6 +109,27 @@ public class AdProfessionsFragment extends Fragment {
 
     private void showEditDialog(Profession profession) {
         View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_add_profession, null);
+        Spinner imageSpinner = dialogView.findViewById(R.id.image_spinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.image_names, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        imageSpinner.setAdapter(adapter);
+
+        imageSpinner.setSelection(getImageIndex(profession.getImageResId()));
+
+        imageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedImageResId = imageResIds[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                selectedImageResId = imageResIds[0]; // default image
+            }
+        });
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Edit Profession");
         builder.setView(dialogView);
@@ -129,6 +155,7 @@ public class AdProfessionsFragment extends Fragment {
                 profession.setIntroDetail(intro);
                 profession.setCoursesDetail(courses);
                 profession.setRequirementsDetail(requirements);
+                profession.setImageResId(selectedImageResId);
                 professionRepository.updateProfession(profession);
                 professions.clear();
                 professions.addAll(professionRepository.getAllProfessions());
@@ -153,5 +180,14 @@ public class AdProfessionsFragment extends Fragment {
         });
         builder.setNegativeButton("No", null);
         builder.create().show();
+    }
+
+    private int getImageIndex(int imageResId) {
+        for (int i = 0; i < imageResIds.length; i++) {
+            if (imageResIds[i] == imageResId) {
+                return i;
+            }
+        }
+        return 0; // default image
     }
 }
