@@ -18,6 +18,7 @@ import java.util.List;
 
 public class LeaderShipFragment extends Fragment {
     public static List<LeaderShip> leaderShips = getLeaderShips();
+    public static String intro2 = "";
     public static List<LeaderShip> getLeaderShips(){
         List<LeaderShip> leaderShips = new ArrayList<>();
         leaderShips.addAll(Arrays.asList(
@@ -44,10 +45,11 @@ public class LeaderShipFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_leader_ship, container, false);
 
         TextView textView = rootView.findViewById(R.id.text_view_leader_ship);
-        for (LeaderShip leaderShip: leaderShips){
-            textView.setText(textView.getText()+leaderShip.getName()+"："+leaderShip.getIntro()+"\n\n");
-        }
-
+        if(intro2=="")
+        {for (LeaderShip leaderShip: leaderShips){
+            intro2 += leaderShip.getName() + "：" + leaderShip.getIntro() + "\n\n";
+        }}
+        textView.setText(intro2);
         return rootView;
     }
 }

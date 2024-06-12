@@ -45,7 +45,7 @@ public class ModifyCollegeInfoTest {
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void modifyCollegeInfoTest() {
+    public void modifyCollegeInfoTest2() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.menu_my), withContentDescription("我的"),
                         childAtPosition(
@@ -120,34 +120,26 @@ public class ModifyCollegeInfoTest {
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 1)));
-        materialTextView2.perform(click());
+        materialTextView2.perform(scrollTo(), click());
 
         ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.edit_leadership_add), withText("杨光华：院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。\n\n周玉宇：党总支书记，负责学院党总支全面工作；分管党建、思政、意识形态、干部、宣传、监察、安全、保密、统战、工会等工作。\n\n陈韶鹏：党总支副书记，分管学生工作、信息化、竞赛基地、校友等工作。\n\n施政：副院长，分管学科建设、科研、研究生教育、高级研修班、产学研合作平台、国际交流与合作等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n"),
+                allOf(withId(R.id.edit_leadership_add), withText("杨光华：院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。\n\n周玉宇：党总支书记，负责学院党总支全面工作；分管党建、思政、意识形态、干部、宣传、监察、安全、保密、统战、工会等工作。\n\n陈韶鹏：党总支副书记，分管学生工作、信息化、竞赛基地、校友等工作。\n\n施政：副院长，分管学科建设、科研、研究生教育、高级研修班、产学研合作平台、国际交流与合作等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 2)));
+        appCompatEditText3.perform(replaceText("111杨光华：院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。\n\n周玉宇：党总支书记，负责学院党总支全面工作；分管党建、思政、意识形态、干部、宣传、监察、安全、保密、统战、工会等工作。\n\n陈韶鹏：党总支副书记，分管学生工作、信息化、竞赛基地、校友等工作。\n\n施政：副院长，分管学科建设、科研、研究生教育、高级研修班、产学研合作平台、国际交流与合作等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n"));
 
         ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.edit_leadership_add), withText("杨光华：院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。\n\n周玉宇：党总支书记，负责学院党总支全面工作；分管党建、思政、意识形态、干部、宣传、监察、安全、保密、统战、工会等工作。\n\n陈韶鹏：党总支副书记，分管学生工作、信息化、竞赛基地、校友等工作。\n\n施政：副院长，分管学科建设、科研、研究生教育、高级研修班、产学研合作平台、国际交流与合作等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                2)));
-        appCompatEditText4.perform(replaceText("杨光华：院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。1\n\n周玉宇：党总支书记，负责学院党总支全面工作；分管党建、思政、意识形态、干部、宣传、监察、安全、保密、统战、工会等工作。\n\n陈韶鹏：党总支副书记，分管学生工作、信息化、竞赛基地、校友等工作。\n\n施政：副院长，分管学科建设、科研、研究生教育、高级研修班、产学研合作平台、国际交流与合作等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n"));
-
-        ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.edit_leadership_add), withText("杨光华：院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。1\n\n周玉宇：党总支书记，负责学院党总支全面工作；分管党建、思政、意识形态、干部、宣传、监察、安全、保密、统战、工会等工作。\n\n陈韶鹏：党总支副书记，分管学生工作、信息化、竞赛基地、校友等工作。\n\n施政：副院长，分管学科建设、科研、研究生教育、高级研修班、产学研合作平台、国际交流与合作等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n"),
+                allOf(withId(R.id.edit_leadership_add), withText("111杨光华：院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。\n\n周玉宇：党总支书记，负责学院党总支全面工作；分管党建、思政、意识形态、干部、宣传、监察、安全、保密、统战、工会等工作。\n\n陈韶鹏：党总支副书记，分管学生工作、信息化、竞赛基地、校友等工作。\n\n施政：副院长，分管学科建设、科研、研究生教育、高级研修班、产学研合作平台、国际交流与合作等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText5.perform(closeSoftKeyboard());
+        appCompatEditText4.perform(closeSoftKeyboard());
 
         ViewInteraction materialButton2 = onView(
                 allOf(withId(R.id.button_save2), withText("保存"),
@@ -158,11 +150,41 @@ public class ModifyCollegeInfoTest {
                                 0)));
         materialButton2.perform(scrollTo(), click());
 
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.text_view_leader_ship_add), withText("杨光华：院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。1\n\n周玉宇：党总支书记，负责学院党总支全面工作；分管党建、思政、意识形态、干部、宣传、监察、安全、保密、统战、工会等工作。\n\n陈韶鹏：党总支副书记，分管学生工作、信息化、竞赛基地、校友等工作。\n\n施政：副院长，分管学科建设、科研、研究生教育、高级研修班、产学研合作平台、国际交流与合作等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
+        ViewInteraction materialButton3 = onView(
+                allOf(withId(R.id.exit_admin_mode_button), withText("退出管理员模式"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
                         isDisplayed()));
-        textView.check(matches(withText("杨光华：院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。1\n\n周玉宇：党总支书记，负责学院党总支全面工作；分管党建、思政、意识形态、干部、宣传、监察、安全、保密、统战、工会等工作。\n\n陈韶鹏：党总支副书记，分管学生工作、信息化、竞赛基地、校友等工作。\n\n施政：副院长，分管学科建设、科研、研究生教育、高级研修班、产学研合作平台、国际交流与合作等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n")));
+        materialButton3.perform(click());
+
+        ViewInteraction bottomNavigationItemView2 = onView(
+                allOf(withId(R.id.menu_college), withContentDescription("学院"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.bottom_navi_view),
+                                        0),
+                                2),
+                        isDisplayed()));
+        bottomNavigationItemView2.perform(click());
+
+        ViewInteraction tabView3 = onView(
+                allOf(withContentDescription("学院领导"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.tabLayout),
+                                        0),
+                                1),
+                        isDisplayed()));
+        tabView3.perform(click());
+
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.text_view_leader_ship), withText("111杨光华：院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。\n\n周玉宇：党总支书记，负责学院党总支全面工作；分管党建、思政、意识形态、干部、宣传、监察、安全、保密、统战、工会等工作。\n\n陈韶鹏：党总支副书记，分管学生工作、信息化、竞赛基地、校友等工作。\n\n施政：副院长，分管学科建设、科研、研究生教育、高级研修班、产学研合作平台、国际交流与合作等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n"),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
+                        isDisplayed()));
+        textView.check(matches(withText("111杨光华：院长，负责学院全面工作；分管行政、人事、财务、高水平大学建设等工作；联系物联网与物流工程研究院。\n\n周玉宇：党总支书记，负责学院党总支全面工作；分管党建、思政、意识形态、干部、宣传、监察、安全、保密、统战、工会等工作。\n\n陈韶鹏：党总支副书记，分管学生工作、信息化、竞赛基地、校友等工作。\n\n施政：副院长，分管学科建设、科研、研究生教育、高级研修班、产学研合作平台、国际交流与合作等工作。\n\n闫勉：副院长，分管本科教育、教师教学培训、实验室、实习/实践平台与基地、人工智能产业学院建设等工作。\n\n")));
     }
 
     private static Matcher<View> childAtPosition(
