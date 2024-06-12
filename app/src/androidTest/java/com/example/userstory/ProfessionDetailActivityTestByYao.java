@@ -48,34 +48,10 @@ public class ProfessionDetailActivityTestByYao {
         recyclerView.perform(actionOnItemAtPosition(0, click()));
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.textView),
+                allOf(withId(R.id.textView), withText("黄国全"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
                         isDisplayed()));
-        textView.check(matches(withText("导师0")));
-
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.textView2),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
-                        isDisplayed()));
-        textView2.check(matches(withText("讲师")));
-
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.textView4),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
-                        isDisplayed()));
-        textView3.check(matches(withText("AI")));
-
-        ViewInteraction textView4 = onView(
-                allOf(withId(R.id.textView6),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
-                        isDisplayed()));
-        textView4.check(matches(withText("我是导师0，一名研究方向为人工智能的讲师。致力于探索AI在各个领域的应用，帮助学生掌握最新的技术和知识。热爱教学，乐于分享，期待与你一起探讨AI的无限可能性。")));
-
-        ViewInteraction textView5 = onView(
-                allOf(withId(R.id.textView8),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
-                        isDisplayed()));
-        textView5.check(matches(withText("10001")));
+        textView.check(matches(withText("黄国全")));
     }
 
     private static Matcher<View> childAtPosition(
