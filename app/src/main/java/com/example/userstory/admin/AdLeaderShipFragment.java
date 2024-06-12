@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.userstory.R;
+import com.example.userstory.fragment.collegeInnerFragment.LeaderShipFragment;
 import com.example.userstory.object.LeaderShip;
 
 import java.util.ArrayList;
@@ -44,18 +45,18 @@ public class AdLeaderShipFragment extends Fragment{
         EditText collegeIntroEditText = rootView.findViewById(R.id.edit_leadership_add);
         Button buttonSave = rootView.findViewById(R.id.button_save2);
         TextView textView = rootView.findViewById(R.id.text_view_leader_ship_add);
-        for (LeaderShip leaderShip: leaderShips){
-            textView.setText(textView.getText()+leaderShip.getName()+"："+leaderShip.getIntro()+"\n\n");
-        }
+        if(LeaderShipFragment.intro2==""){
+            for (LeaderShip leaderShip: leaderShips){
+                textView.setText(textView.getText()+leaderShip.getName()+"："+leaderShip.getIntro()+"\n\n");
+            }}
+        else textView.setText(LeaderShipFragment.intro2);
         //collegeIntro.setText(ORIGINAL_INTRO);
 
         collegeIntro.setOnClickListener(v -> {
             collegeIntro.setVisibility(View.GONE);
             collegeIntroEditText.setVisibility(View.VISIBLE);
             buttonSave.setVisibility(View.VISIBLE);
-            for (LeaderShip leaderShip: leaderShips){
-                collegeIntroEditText.setText(textView.getText()+leaderShip.getName()+"："+leaderShip.getIntro()+"\n\n");
-            }
+            collegeIntroEditText.setText(textView.getText().toString());
             collegeIntroEditText.setEnabled(true);
             collegeIntroEditText.requestFocus();
         });
@@ -65,6 +66,7 @@ public class AdLeaderShipFragment extends Fragment{
             if (!TextUtils.isEmpty(editedIntro)) {
                 String intro = editedIntro;
                 collegeIntro.setText(intro);
+                LeaderShipFragment.intro2=intro;
             }
             collegeIntroEditText.setVisibility(View.GONE);
             buttonSave.setVisibility(View.GONE);
