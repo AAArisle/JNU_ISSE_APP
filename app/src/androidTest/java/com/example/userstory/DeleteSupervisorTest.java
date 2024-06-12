@@ -40,14 +40,14 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class DeleteSupervisor1Test {
+public class DeleteSupervisorTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void deleteSupervisor1Test() {
+    public void deleteSupervisorTest() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.menu_my), withContentDescription("我的"),
                         childAtPosition(
@@ -65,7 +65,6 @@ public class DeleteSupervisor1Test {
                                 7)))
                 .atPosition(2);
         materialTextView.perform(click());
-
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.usernameEditText),
                         childAtPosition(
@@ -85,7 +84,6 @@ public class DeleteSupervisor1Test {
                                 1),
                         isDisplayed()));
         appCompatEditText2.perform(replaceText("pwd"), closeSoftKeyboard());
-
         ViewInteraction materialButton = onView(
                 allOf(withId(android.R.id.button1), withText("登录"),
                         childAtPosition(
@@ -95,55 +93,6 @@ public class DeleteSupervisor1Test {
                                 3)));
         materialButton.perform(scrollTo(), click());
 
-        ViewInteraction floatingActionButton = onView(
-                allOf(withId(R.id.ad_supervisor_floatingActionButton),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.FrameLayout")),
-                                        0),
-                                1),
-                        isDisplayed()));
-        floatingActionButton.perform(click());
-
-        ViewInteraction materialTextView2 = onView(
-                allOf(withId(R.id.ad_supervisor_textView_add), withText("导师姓名"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        1),
-                                1),
-                        isDisplayed()));
-        materialTextView2.perform(click());
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.editText),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.custom),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText3.perform(replaceText("test"), closeSoftKeyboard());
-
-        ViewInteraction materialButton2 = onView(
-                allOf(withId(android.R.id.button1), withText("确认修改"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                3)));
-        materialButton2.perform(scrollTo(), click());
-
-        ViewInteraction materialButton3 = onView(
-                allOf(withId(R.id.ad_supervisor_OK_button_add), withText("确认添加"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        1),
-                                13),
-                        isDisplayed()));
-        materialButton3.perform(click());
-
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.ad_supervisor_recycler_view),
                         childAtPosition(
@@ -151,16 +100,16 @@ public class DeleteSupervisor1Test {
                                 1)));
         recyclerView.perform(actionOnItemAtPosition(0, longClick()));
 
-        ViewInteraction materialButton4 = onView(
+        ViewInteraction materialButton2 = onView(
                 allOf(withId(android.R.id.button1), withText("确定"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 3)));
-        materialButton4.perform(scrollTo(), click());
+        materialButton2.perform(scrollTo(), click());
 
-        ViewInteraction appCompatEditText4 = onView(
+        ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.ad_supervisor_search_edit_text),
                         childAtPosition(
                                 childAtPosition(
@@ -168,7 +117,7 @@ public class DeleteSupervisor1Test {
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText4.perform(replaceText("test"), closeSoftKeyboard());
+        appCompatEditText3.perform(replaceText("0"), closeSoftKeyboard());
 
         ViewInteraction viewGroup = onView(
                 allOf(withParent(allOf(withId(R.id.ad_supervisor_recycler_view),
