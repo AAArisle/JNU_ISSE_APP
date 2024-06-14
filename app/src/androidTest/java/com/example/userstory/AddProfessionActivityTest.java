@@ -162,10 +162,10 @@ public class AddProfessionActivityTest {
         materialButton2.perform(scrollTo(), click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.text_view), withText("Biology"),
+                allOf(withId(R.id.text_view), withText("biology"),
                         withParent(withParent(withId(R.id.card_view))),
                         isDisplayed()));
-        textView.check(matches(withText("Biology")));
+        textView.check(matches(withText("biology")));
     }
 
     private static Matcher<View> childAtPosition(
