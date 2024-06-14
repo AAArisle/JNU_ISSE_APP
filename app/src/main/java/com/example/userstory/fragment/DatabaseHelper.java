@@ -46,10 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private void insertDefaultProfessions(SQLiteDatabase db) {
         insertProfession(db, "Biology", R.drawable.biology, " ", "", "");
         insertProfession(db, "Computer Science", R.drawable.computer_science, "", "", "");
-        insertProfession(db, "Politics", R.drawable.politics, "", "", "");
-        insertProfession(db, "Philosophy", R.drawable.philosophy, "", "", " ");
-        insertProfession(db, "Maths", R.drawable.maths, " ", " ", " ");
-        insertProfession(db, "AI", R.drawable.ai, " ", " ", " ");
+
     }
     private void insertProfession(SQLiteDatabase db, String name, int imageResId, String intro, String courses, String requirements) {
         String insertSQL = "INSERT INTO " + TABLE_PROFESSIONS + " (" +
