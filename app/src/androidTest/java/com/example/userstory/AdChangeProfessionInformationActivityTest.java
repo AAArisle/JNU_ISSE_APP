@@ -45,7 +45,7 @@ public class AdChangeProfessionInformationActivityTest {
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void adChangeProfessionInformation2ActivityTest() {
+    public void adChangeProfessionInformationActivityTest() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.menu_my), withContentDescription("我的"),
                         childAtPosition(

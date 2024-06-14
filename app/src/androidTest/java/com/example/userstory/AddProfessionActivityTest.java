@@ -44,7 +44,7 @@ public class AddProfessionActivityTest {
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void addProfession3ActivityTest() {
+    public void addProfessionActivityTest() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.menu_my), withContentDescription("我的"),
                         childAtPosition(
